@@ -1,0 +1,32 @@
+{
+  "name": "lensgeometry",
+  "version": "1.0.0",
+  "description": "library of curve construction utilities",
+  "main": "dist/lib/index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register test/*.*",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PTSoptics/LensGeometry.git"
+  },
+  "author": "Dave Barreto",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/PTSoptics/LensGeometry/issues"
+  },
+  "homepage": "https://github.com/PTSoptics/LensGeometry#readme",
+  "files": [
+    "dist/**"
+  ],
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.11.3",
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.3.3333"
+  }
+}
