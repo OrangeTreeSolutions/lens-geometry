@@ -1,3 +1,4 @@
+import { LensCurve } from "./LensCurve";
 import { CircularSag, ConicSag, ShapeFromE, ToDegrees, ToRadians } from "./utilities";
 
 export {
@@ -5,5 +6,7 @@ export {
     ConicSag,
     ShapeFromE,
     ToRadians,
-    ToDegrees
+    ToDegrees,
+
+    LensCurve,
 };
