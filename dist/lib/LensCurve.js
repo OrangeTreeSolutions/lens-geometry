@@ -2,14 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class LensCurve {
     get startx() { return this._startx; }
+    get startz() { return this._startz; }
     get endx() { return this._endx; }
+    get endz() { return this.height(this._endx); }
     get width() { return this._width; }
-    get zoneHeightOffset() { return this._zoneHeightOffset; }
     constructor(startx, width, zoneHeightOffset) {
         this._startx = startx;
         this._width = width;
         this._endx = this.startx + this.width;
-        this._zoneHeightOffset = zoneHeightOffset;
+        this._startz = zoneHeightOffset;
     }
     /**
      * resize
@@ -43,7 +44,7 @@ class LensCurve {
      * @param {number}      newStartZ height
      */
     translateToZ(newStartZ) {
-        this._zoneHeightOffset = newStartZ;
+        this._startz = newStartZ;
         this.recalculateInternalParameters();
     }
 }

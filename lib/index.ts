@@ -1,3 +1,4 @@
+import { TangentLine } from "./curves/TangentLine";
 import { LensCurve } from "./LensCurve";
 import { LensProfile } from "./LensProfile";
 import { CircularSag, ConicSag, ShapeFromE, ToDegrees, ToRadians } from "./utilities";
@@ -11,5 +12,7 @@ export {
 
     LensCurve,
     LensProfile,
+
+    TangentLine,
 
 };

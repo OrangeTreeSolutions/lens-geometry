@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const TangentLine_1 = require("./curves/TangentLine");
+exports.TangentLine = TangentLine_1.TangentLine;
 const LensCurve_1 = require("./LensCurve");
 exports.LensCurve = LensCurve_1.LensCurve;
 const LensProfile_1 = require("./LensProfile");

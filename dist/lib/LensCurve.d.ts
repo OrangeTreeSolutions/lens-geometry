@@ -1,12 +1,13 @@
 export declare abstract class LensCurve {
     private _startx;
+    private _startz;
     private _endx;
     private _width;
-    private _zoneHeightOffset;
     readonly startx: number;
+    readonly startz: number;
     readonly endx: number;
+    readonly endz: number;
     readonly width: number;
-    readonly zoneHeightOffset: number;
     constructor(startx: number, width: number, zoneHeightOffset: number);
     /**
      * resize
@@ -36,6 +37,9 @@ export declare abstract class LensCurve {
      * height
      *
      * Compute the height of the curve at a particular point.
+     *
+     * **warning** the individual curves do not do bounds checking on x; it is up to you to
+     * make sure you are asking for values on the defined area.
      *
      * @param {number}      x distance from lens center
      *

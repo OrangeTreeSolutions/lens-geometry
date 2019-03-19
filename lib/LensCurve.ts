@@ -5,20 +5,21 @@ export abstract class LensCurve {
     // for several curve shapes, we want the selected curve segment relative to the lens axis origin (e.g. typical circular or conic)
 
     private _startx: number;
+    private _startz: number;
     private _endx: number;
     private _width: number;
-    private _zoneHeightOffset: number;
 
     get startx() { return this._startx; }
+    get startz() { return this._startz; }
     get endx() { return this._endx; }
+    get endz() { return this.height(this._endx); }
     get width() { return this._width; }
-    get zoneHeightOffset() { return this._zoneHeightOffset; }
 
     constructor(startx: number, width: number, zoneHeightOffset: number) {
         this._startx = startx;
         this._width = width;
         this._endx = this.startx + this.width;
-        this._zoneHeightOffset = zoneHeightOffset;
+        this._startz = zoneHeightOffset;
     }
 
     /**
@@ -55,7 +56,7 @@ export abstract class LensCurve {
      * @param {number}      newStartZ height
      */
     public translateToZ(newStartZ: number) {
-        this._zoneHeightOffset = newStartZ;
+        this._startz = newStartZ;
         this.recalculateInternalParameters();
     }
 
@@ -63,6 +64,9 @@ export abstract class LensCurve {
      * height
      *
      * Compute the height of the curve at a particular point.
+     * 
+     * **warning** the individual curves do not do bounds checking on x; it is up to you to
+     * make sure you are asking for values on the defined area.
      *
      * @param {number}      x distance from lens center
      *
