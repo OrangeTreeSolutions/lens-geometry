@@ -1,5 +1,6 @@
 import { Circle } from "./curves/Circle";
 import { Conic } from "./curves/Conic";
+import { TangentConvexTorus } from "./curves/TangentConvexTorus";
 import { TangentLine } from "./curves/TangentLine";
 import { LensCurve } from "./LensCurve";
 import { LensProfile } from "./LensProfile";
@@ -17,6 +18,7 @@ export {
 
     Circle,
     Conic,
+    TangentConvexTorus,
     TangentLine,
 
 };
