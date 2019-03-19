@@ -1,4 +1,5 @@
 import { LensCurve } from "./LensCurve";
+import { LensProfile } from "./LensProfile";
 import { CircularSag, ConicSag, ShapeFromE, ToDegrees, ToRadians } from "./utilities";
 
 export {
@@ -9,4 +10,6 @@ export {
     ToDegrees,
 
     LensCurve,
+    LensProfile,
+
 };
