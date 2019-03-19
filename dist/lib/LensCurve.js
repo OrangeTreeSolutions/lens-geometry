@@ -17,6 +17,8 @@ class LensCurve {
      *
      * Change the width of a curve
      *
+     * **internal** use only
+     *
      * @param {number} newWidth new curve width
      */
     resize(newWidth) {
@@ -29,6 +31,8 @@ class LensCurve {
      *
      * Set the curve starting X point
      *
+     * **internal** use only
+     *
      * @param {number}      newStartZ height
      */
     translateToX(newStartX) {
@@ -39,7 +43,9 @@ class LensCurve {
     /**
      * translateToZ
      *
-     * Set the curve starting Z point
+     * Set the curve starting Z point.
+     *
+     * **internal** use only
      *
      * @param {number}      newStartZ height
      */

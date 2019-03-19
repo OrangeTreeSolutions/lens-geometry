@@ -27,6 +27,8 @@ export abstract class LensCurve {
      *
      * Change the width of a curve
      *
+     * **internal** use only
+     *
      * @param {number} newWidth new curve width
      */
     public resize(newWidth: number) {
@@ -40,6 +42,8 @@ export abstract class LensCurve {
      *
      * Set the curve starting X point
      *
+     * **internal** use only
+     *
      * @param {number}      newStartZ height
      */
     public translateToX(newStartX: number) {
@@ -51,7 +55,9 @@ export abstract class LensCurve {
     /**
      * translateToZ
      *
-     * Set the curve starting Z point
+     * Set the curve starting Z point.
+     *
+     * **internal** use only
      *
      * @param {number}      newStartZ height
      */
