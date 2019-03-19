@@ -64,7 +64,7 @@ export abstract class LensCurve {
      * height
      *
      * Compute the height of the curve at a particular point.
-     * 
+     *
      * **warning** the individual curves do not do bounds checking on x; it is up to you to
      * make sure you are asking for values on the defined area.
      *
