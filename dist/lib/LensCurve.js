@@ -1,16 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * LensCurve class
+ *
+ * Class representing curve segments used to construct lens profiles.
+ */
 class LensCurve {
     get startx() { return this._startx; }
     get startz() { return this._startz; }
     get endx() { return this._endx; }
     get endz() { return this.height(this._endx); }
     get width() { return this._width; }
-    constructor(startx, width, zoneHeightOffset) {
-        this._startx = startx;
+    constructor(width, startx, startz) {
+        this._startx = startx || 0;
+        this._startz = startz || 0;
         this._width = width;
         this._endx = this.startx + this.width;
-        this._startz = zoneHeightOffset;
     }
     /**
      * resize

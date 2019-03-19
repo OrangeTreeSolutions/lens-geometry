@@ -1,3 +1,8 @@
+/**
+ * LensCurve class
+ *
+ * Class representing curve segments used to construct lens profiles.
+ */
 export declare abstract class LensCurve {
     private _startx;
     private _startz;
@@ -8,7 +13,7 @@ export declare abstract class LensCurve {
     readonly endx: number;
     readonly endz: number;
     readonly width: number;
-    constructor(startx: number, width: number, zoneHeightOffset: number);
+    constructor(width: number, startx?: number, startz?: number);
     /**
      * resize
      *

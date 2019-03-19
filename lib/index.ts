@@ -1,3 +1,4 @@
+import { Circle } from "./curves/Circle";
 import { TangentLine } from "./curves/TangentLine";
 import { LensCurve } from "./LensCurve";
 import { LensProfile } from "./LensProfile";
@@ -13,6 +14,7 @@ export {
     LensCurve,
     LensProfile,
 
+    Circle,
     TangentLine,
 
 };

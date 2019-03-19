@@ -1,3 +1,8 @@
+/**
+ * LensCurve class
+ *
+ * Class representing curve segments used to construct lens profiles.
+ */
 export abstract class LensCurve {
 
     // each curve must have height(0) = 0
@@ -15,11 +20,11 @@ export abstract class LensCurve {
     get endz() { return this.height(this._endx); }
     get width() { return this._width; }
 
-    constructor(startx: number, width: number, zoneHeightOffset: number) {
-        this._startx = startx;
+    constructor(width: number, startx?: number, startz?: number) {
+        this._startx = startx || 0;
+        this._startz = startz || 0;
         this._width = width;
         this._endx = this.startx + this.width;
-        this._startz = zoneHeightOffset;
     }
 
     /**
