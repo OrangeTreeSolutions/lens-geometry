@@ -2,7 +2,7 @@ import { expect } from "chai";
 
 import { Circle, LensCurve } from "../lib/index";
 
-describe("Test TangentLine", () => {
+describe("Test Circle", () => {
 
     const circleA = new Circle(8, 3);
     describe("Test Circle (r=8,w=3)", () => {

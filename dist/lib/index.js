@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Circle_1 = require("./curves/Circle");
 exports.Circle = Circle_1.Circle;
+const Conic_1 = require("./curves/Conic");
+exports.Conic = Conic_1.Conic;
 const TangentLine_1 = require("./curves/TangentLine");
 exports.TangentLine = TangentLine_1.TangentLine;
 const LensCurve_1 = require("./LensCurve");

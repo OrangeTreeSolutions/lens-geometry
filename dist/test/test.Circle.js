@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
 const index_1 = require("../lib/index");
-describe("Test TangentLine", () => {
+describe("Test Circle", () => {
     const circleA = new index_1.Circle(8, 3);
     describe("Test Circle (r=8,w=3)", () => {
         it("should start at 0,0", () => {
