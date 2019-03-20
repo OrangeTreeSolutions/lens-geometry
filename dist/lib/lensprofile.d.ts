@@ -1,5 +1,6 @@
 import { LensCurve } from "./index";
 export declare class LensProfile {
+    private static epsilon;
     private curveList;
     curveNumber(x: number): number;
     /**

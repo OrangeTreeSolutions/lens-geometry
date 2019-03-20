@@ -1,23 +1,31 @@
 import { LensCurve } from "./index";
 
-const epsilon = 0.00001;
-
 export class LensProfile {
 
+    private static epsilon = 0.00001;
     private curveList: LensCurve[] = [];
 
+    /**
+     * curveNumber
+     *
+     * Return index of curve segment that x falls into. If x is on a curve
+     * boundary it will return the inner curve.
+     *
+     * @return {number}     curve index
+     */
     public curveNumber(x: number): number {
         let zone = null;
         // what zone to poll
-        for (let i: number = 0; i <= this.curveList.length; i++) {
-            if (x <= this.curveList[i].endx + epsilon) {
+        for (let i: number = 0; i < this.curveList.length; i++) {
+            if (x <= this.curveList[i].endx + LensProfile.epsilon) {
                 zone = i;
+                break;
             }
         }
-        if (zone) {
-            return zone;
-        } else {
+        if (zone === null) {
             throw new Error("out of lens profile bounds");
+        } else {
+            return zone;
         }
     }
 

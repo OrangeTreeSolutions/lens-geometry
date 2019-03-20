@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const epsilon = 0.00001;
 class LensProfile {
     constructor() {
         this.curveList = [];
@@ -8,16 +7,17 @@ class LensProfile {
     curveNumber(x) {
         let zone = null;
         // what zone to poll
-        for (let i = 0; i <= this.curveList.length; i++) {
-            if (x <= this.curveList[i].endx + epsilon) {
+        for (let i = 0; i < this.curveList.length; i++) {
+            if (x <= this.curveList[i].endx + LensProfile.epsilon) {
                 zone = i;
+                break;
             }
         }
-        if (zone) {
-            return zone;
+        if (zone === null) {
+            throw new Error("out of lens profile bounds");
         }
         else {
-            throw new Error("out of lens profile bounds");
+            return zone;
         }
     }
     /**
@@ -119,5 +119,6 @@ class LensProfile {
         return (this.curveList.length) ? this.curveList[this.curveList.length - 1] : null;
     }
 }
+LensProfile.epsilon = 0.00001;
 exports.LensProfile = LensProfile;
 //# sourceMappingURL=LensProfile.js.map

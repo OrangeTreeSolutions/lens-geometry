@@ -5,9 +5,7 @@
  */
 export abstract class LensCurve {
 
-    // each curve must have height(0) = 0
-    // then for each curve, we translate it relative to the origin
-    // for several curve shapes, we want the selected curve segment relative to the lens axis origin (e.g. typical circular or conic)
+    // Note: each curve must have height(startX) = startZ
 
     private _startx: number;
     private _startz: number;
