@@ -1,5 +1,5 @@
 import {LensCurve} from "../LensCurve";
-import {ConicSag} from "../utilities";
+import {conicSag} from "../utilities";
 
 export class Conic extends LensCurve {
     private radius: number;
@@ -26,12 +26,12 @@ export class Conic extends LensCurve {
     }
 
     public height(x: number): number {
-        let height: number = ConicSag(x, this.radius, this.shapeFactor);
+        let height: number = conicSag(x, this.radius, this.shapeFactor);
         height = height - this.zOffset + this.startz;
         return height;
     }
 
     protected recalculateInternalParameters(): void {
-        this.zOffset = this.startx === 0 ? 0 : ConicSag(this.startx, this.radius, this.shapeFactor);
+        this.zOffset = this.startx === 0 ? 0 : conicSag(this.startx, this.radius, this.shapeFactor);
     }
 }

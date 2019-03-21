@@ -23,7 +23,7 @@ class TangentConvexTorus extends LensCurve_1.LensCurve {
         this.recalculateInternalParameters();
     }
     height(x) {
-        let height = -utilities_1.CircularSag(x - this.xOffset, this.radius);
+        let height = -utilities_1.circularSag(x - this.xOffset, this.radius);
         height = height - this.zOffset + this.startz;
         return height;
     }
@@ -31,8 +31,8 @@ class TangentConvexTorus extends LensCurve_1.LensCurve {
         // originally was cos(90-tangent) but that's equivalent to cos(tangent)
         // torus x is negative relative to the axis of the circle used for the torus
         // and the sag itself is negative because we're looking at the bottom of the circle
-        const torusx = this.radius * Math.sin(utilities_1.ToRadians(this.tangent));
-        this.zOffset = -utilities_1.CircularSag(-torusx, this.radius);
+        const torusx = this.radius * Math.sin(utilities_1.toRadians(this.tangent));
+        this.zOffset = -utilities_1.circularSag(-torusx, this.radius);
         // finally translate relative to startX
         this.xOffset = this.startx + torusx;
     }

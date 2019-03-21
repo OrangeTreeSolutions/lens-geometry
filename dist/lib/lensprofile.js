@@ -4,6 +4,14 @@ class LensProfile {
     constructor() {
         this.curveList = [];
     }
+    /**
+     * curveNumber
+     *
+     * Return index of curve segment that x falls into. If x is on a curve
+     * boundary it will return the inner curve.
+     *
+     * @return {number}     curve index
+     */
     curveNumber(x) {
         let zone = null;
         // what zone to poll

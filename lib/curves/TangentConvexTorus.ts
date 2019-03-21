@@ -1,5 +1,5 @@
 import { LensCurve } from "../LensCurve";
-import { CircularSag, ToRadians } from "../utilities";
+import { circularSag, toRadians } from "../utilities";
 
 export class TangentConvexTorus extends LensCurve {
     private radius: number;         // radius of torus in mm
@@ -27,7 +27,7 @@ export class TangentConvexTorus extends LensCurve {
     }
 
     public height(x: number): number {
-        let height: number = -CircularSag(x - this.xOffset, this.radius);
+        let height: number = -circularSag(x - this.xOffset, this.radius);
         height = height - this.zOffset + this.startz;
         return height;
     }
@@ -36,8 +36,8 @@ export class TangentConvexTorus extends LensCurve {
         // originally was cos(90-tangent) but that's equivalent to cos(tangent)
         // torus x is negative relative to the axis of the circle used for the torus
         // and the sag itself is negative because we're looking at the bottom of the circle
-        const torusx = this.radius * Math.sin(ToRadians(this.tangent));
-        this.zOffset = -CircularSag(-torusx, this.radius);
+        const torusx = this.radius * Math.sin(toRadians(this.tangent));
+        this.zOffset = -circularSag(-torusx, this.radius);
 
         // finally translate relative to startX
         this.xOffset = this.startx + torusx;

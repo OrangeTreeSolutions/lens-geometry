@@ -1,5 +1,5 @@
 import {LensCurve} from "../LensCurve";
-import {ToRadians} from "../utilities";
+import {toRadians} from "../utilities";
 
 export class TangentLine extends LensCurve {
     private angle: number;      // from Horizontal in Degrees
@@ -20,7 +20,7 @@ export class TangentLine extends LensCurve {
             throw new Error("Angle out of Range");
         }
         this.angle = angle;
-        this.gradient = Math.tan(ToRadians(this.angle));
+        this.gradient = Math.tan(toRadians(this.angle));
     }
 
     public height(x: number): number {

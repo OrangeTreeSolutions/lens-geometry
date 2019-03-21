@@ -21,12 +21,12 @@ class Circle extends LensCurve_1.LensCurve {
         this.recalculateInternalParameters();
     }
     height(x) {
-        let height = utilities_1.CircularSag(x, this.radius);
+        let height = utilities_1.circularSag(x, this.radius);
         height = this.startz + height - this.zOffset;
         return height;
     }
     recalculateInternalParameters() {
-        this.zOffset = this.startx === 0 ? 0 : utilities_1.CircularSag(this.startx, this.radius);
+        this.zOffset = this.startx === 0 ? 0 : utilities_1.circularSag(this.startx, this.radius);
     }
 }
 exports.Circle = Circle;

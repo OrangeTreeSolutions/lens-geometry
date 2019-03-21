@@ -3,13 +3,13 @@
  * @param {number}      degrees
  * @return {number}     radians
  */
-export declare function ToRadians(degrees: number): number;
+export declare function toRadians(degrees: number): number;
 /**
  * ToDegrees
  * @param {number}      radians
  * @return {number}     degrees
  */
-export declare function ToDegrees(radians: number): number;
+export declare function toDegrees(radians: number): number;
 /**
  * ConicSag
  *
@@ -25,7 +25,7 @@ export declare function ToDegrees(radians: number): number;
  *
  * @return {number}     sag height.
  */
-export declare function ConicSag(x: number, r0: number, p: number): number;
+export declare function conicSag(x: number, r0: number, p: number): number;
 /**
  * CircularSag
  *
@@ -36,7 +36,7 @@ export declare function ConicSag(x: number, r0: number, p: number): number;
  *
  * @return {number}     sag height.
  */
-export declare function CircularSag(x: number, radius: number): number;
+export declare function circularSag(x: number, radius: number): number;
 /**
  * ShapeFromE
  *
@@ -46,4 +46,48 @@ export declare function CircularSag(x: number, radius: number): number;
  *
  * @return {number}     shape factor p
  */
-export declare function ShapeFromE(e: number): number;
+export declare function shapeFromE(e: number): number;
+/**
+ * convertDTomm
+ *
+ * convert diopters to millimeters
+ *
+ * @param {number}      diopters (D)
+ *
+ * @return {number}     millimeters (mm)
+ */
+export declare function convertDTomm(diopters: number): number;
+/**
+ * convertmmToD
+ *
+ * convert millimeters to Diopters
+ *
+ * @param {number}      millimeters (mm)
+ *
+ * @return {number}     diopters (D)
+ */
+export declare function convertmmToD(millimeters: number): number;
+/**
+ * getInputmm
+ *
+ * utility to get mm from an input that takes both mm and D inputs
+ *
+ * if the input < 20 then it is assumed to be in mm; otherwise it is assumed to be in D and converted to mm.
+ *
+ * @param {number}      mmOrD value in mm or D
+ *
+ * @return {number}     millimeters (mm)
+ */
+export declare function getInputmm(mmOrD: number): number;
+/**
+ * getInputmm
+ *
+ * utility to get D from an input that takes both mm and D inputs
+ *
+ * if the input < 20 then it is assumed to be in mm and converted to D; otherwise it is assumed to be in D.
+ *
+ * @param {number}      mmOrD value in mm or D
+ *
+ * @return {number}     diopters (D)
+ */
+export declare function getInputD(mmOrD: number): number;

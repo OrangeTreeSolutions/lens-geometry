@@ -1,5 +1,5 @@
 import {LensCurve} from "../LensCurve";
-import {CircularSag} from "../utilities";
+import {circularSag} from "../utilities";
 
 export class Circle extends LensCurve {
     private radius: number;
@@ -23,12 +23,12 @@ export class Circle extends LensCurve {
     }
 
     public height(x: number): number {
-        let height: number = CircularSag(x, this.radius);
+        let height: number = circularSag(x, this.radius);
         height = this.startz + height - this.zOffset;
         return height;
     }
 
     protected recalculateInternalParameters(): void {
-        this.zOffset = this.startx === 0 ? 0 : CircularSag(this.startx, this.radius);
+        this.zOffset = this.startx === 0 ? 0 : circularSag(this.startx, this.radius);
     }
 }

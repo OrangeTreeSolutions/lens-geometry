@@ -1,13 +1,21 @@
 import { expect } from "chai";
 
 import { CircularSag, ConicSag, ShapeFromE, ToDegrees, ToRadians } from "../lib/index";
+import { convertDTomm } from "../lib/utilities";
 
 describe("Test Utilities", () => {
-    // describe("convert Diopters to mm", () => {
-    //     it("should equate 30 to 11.25", () => {
-    //         expect(callfund(30)).equals(11.25);
-    //     });
-    // });
+    describe("convert Diopters to mm", () => {
+        it("should equate 30 to 11.25", () => {
+            expect(convertDTomm(30)).equals(11.25); 
+        });
+    });
+
+    describe("convert mm to Diomters", () => {
+        it("should equate 11.25 to 30", () => {
+            expect(convertDTomm(11.25)).equals(30);
+        });
+    });
+
     describe("convert Degrees to Radians", () => {
         it("should equate 90 to pi/2", () => {
             expect(ToRadians(90)).equals(Math.PI / 2);

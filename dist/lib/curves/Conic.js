@@ -23,12 +23,12 @@ class Conic extends LensCurve_1.LensCurve {
         this.recalculateInternalParameters();
     }
     height(x) {
-        let height = utilities_1.ConicSag(x, this.radius, this.shapeFactor);
+        let height = utilities_1.conicSag(x, this.radius, this.shapeFactor);
         height = height - this.zOffset + this.startz;
         return height;
     }
     recalculateInternalParameters() {
-        this.zOffset = this.startx === 0 ? 0 : utilities_1.ConicSag(this.startx, this.radius, this.shapeFactor);
+        this.zOffset = this.startx === 0 ? 0 : utilities_1.conicSag(this.startx, this.radius, this.shapeFactor);
     }
 }
 exports.Conic = Conic;

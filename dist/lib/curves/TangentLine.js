@@ -18,7 +18,7 @@ class TangentLine extends LensCurve_1.LensCurve {
             throw new Error("Angle out of Range");
         }
         this.angle = angle;
-        this.gradient = Math.tan(utilities_1.ToRadians(this.angle));
+        this.gradient = Math.tan(utilities_1.toRadians(this.angle));
     }
     height(x) {
         const zoneX = (x - this.startx);
