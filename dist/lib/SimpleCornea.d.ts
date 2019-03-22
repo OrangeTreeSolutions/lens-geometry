@@ -45,7 +45,7 @@ export declare class SimpleCornea {
         z: number;
     }>;
     /**
-     * generatePointsFlat
+     * generatePointsSteep
      *
      * generate a 2D array of points along the steep meridian from startx to endx at the given interval
      *

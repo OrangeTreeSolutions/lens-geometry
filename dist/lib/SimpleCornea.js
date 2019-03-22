@@ -13,12 +13,13 @@ class SimpleCornea {
         this.steepApicalCurvature = steepApicalCurvature || flatApicalCurvature;
         this.steepEccentricity = steepEccentricity || flatEccentricity;
         this.isToric = !((steepApicalCurvature === undefined) && (steepEccentricity === undefined));
+        const radius = diameter / 2;
         const flatShape = utilities_1.shapeFromE(this.flatEccentricity);
-        const corneaFlat = new Conic_1.Conic(this.flatApicalCurvature, flatShape, this.diameter);
+        const corneaFlat = new Conic_1.Conic(this.flatApicalCurvature, flatShape, radius);
         this.flatMeridian.addCurve(corneaFlat);
         if (this.isToric) {
             const steepShape = utilities_1.shapeFromE(this.steepEccentricity);
-            const corneaSteep = new Conic_1.Conic(this.steepApicalCurvature, steepShape, this.diameter);
+            const corneaSteep = new Conic_1.Conic(this.steepApicalCurvature, steepShape, radius);
             this.steepMeridian = new LensProfile_1.LensProfile();
             this.steepMeridian.addCurve(corneaSteep);
         }
@@ -62,7 +63,7 @@ class SimpleCornea {
         return this.flatMeridian.generatePoints(sx, ex, step);
     }
     /**
-     * generatePointsFlat
+     * generatePointsSteep
      *
      * generate a 2D array of points along the steep meridian from startx to endx at the given interval
      *
