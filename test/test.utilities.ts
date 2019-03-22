@@ -5,7 +5,7 @@ import { circularSag, conicSag, convertDTomm, convertmmToD, shapeFromE, toDegree
 describe("Test Utilities", () => {
     describe("convert Diopters to mm", () => {
         it("should equate 30 to 11.25", () => {
-            expect(convertDTomm(30)).equals(11.25); 
+            expect(convertDTomm(30)).equals(11.25);
         });
     });
 

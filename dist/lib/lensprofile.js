@@ -98,7 +98,7 @@ class LensProfile {
     generatePoints(sx, ex, step) {
         const data = [];
         for (let i = sx; i <= ex; i += step) {
-            data.push({ x: i, y: this.sag(i) });
+            data.push({ x: i, z: this.sag(i) });
         }
         return data;
     }

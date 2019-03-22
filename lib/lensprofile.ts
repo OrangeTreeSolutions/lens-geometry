@@ -98,10 +98,10 @@ export class LensProfile {
      *
      * @return {Array<{x: number, y:number}>   surface points
      */
-    public generatePoints(sx: number, ex: number, step: number): Array<{ x: number, y: number }> {
-        const data: Array<{ x: number, y: number }> = [];
+    public generatePoints(sx: number, ex: number, step: number): Array<{ x: number, z: number }> {
+        const data: Array<{ x: number, z: number }> = [];
         for (let i = sx; i <= ex; i += step) {
-            data.push({ x: i, y: this.sag(i) });
+            data.push({ x: i, z: this.sag(i) });
         }
         return data;
     }

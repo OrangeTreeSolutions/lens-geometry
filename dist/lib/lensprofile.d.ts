@@ -52,7 +52,7 @@ export declare class LensProfile {
      */
     generatePoints(sx: number, ex: number, step: number): Array<{
         x: number;
-        y: number;
+        z: number;
     }>;
     /**
      *  getZoneEndXs
