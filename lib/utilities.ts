@@ -115,7 +115,7 @@ export function convertmmToD(millimeters: number): number {
  * getInputmm
  *
  * utility to get mm from an input that takes both mm and D inputs
- * 
+ *
  * if the input < 20 then it is assumed to be in mm; otherwise it is assumed to be in D and converted to mm.
  *
  * @param {number}      mmOrD value in mm or D

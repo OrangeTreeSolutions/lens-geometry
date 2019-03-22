@@ -1,8 +1,8 @@
 import { expect } from "chai";
 
-import { Circle, Conic, LensProfile, ShapeFromE } from "../lib/index";
+import { Circle, Conic, LensProfile, shapeFromE } from "../lib/index";
 
-const curve1 = new Conic(7.6, ShapeFromE(0.65), 4.9);
+const curve1 = new Conic(7.6, shapeFromE(0.65), 4.9);
 const curve2 = new Circle(10, 0.625);
 
 const lensp = new LensProfile();

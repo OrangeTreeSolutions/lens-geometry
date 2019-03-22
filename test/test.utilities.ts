@@ -1,7 +1,6 @@
 import { expect } from "chai";
 
-import { CircularSag, ConicSag, ShapeFromE, ToDegrees, ToRadians } from "../lib/index";
-import { convertDTomm } from "../lib/utilities";
+import { circularSag, conicSag, convertDTomm, convertmmToD, shapeFromE, toDegrees, toRadians } from "../lib/index";
 
 describe("Test Utilities", () => {
     describe("convert Diopters to mm", () => {
@@ -12,54 +11,54 @@ describe("Test Utilities", () => {
 
     describe("convert mm to Diomters", () => {
         it("should equate 11.25 to 30", () => {
-            expect(convertDTomm(11.25)).equals(30);
+            expect(convertmmToD(11.25)).equals(30);
         });
     });
 
     describe("convert Degrees to Radians", () => {
         it("should equate 90 to pi/2", () => {
-            expect(ToRadians(90)).equals(Math.PI / 2);
+            expect(toRadians(90)).equals(Math.PI / 2);
         });
     });
     describe("convert Radians to Degrees", () => {
         it("should equate pi/4 to 45", () => {
-            expect(ToDegrees(Math.PI / 4)).equals(45);
+            expect(toDegrees(Math.PI / 4)).equals(45);
         });
     });
 
     describe("Test CircularSag", () => {
         it("should return 0 when x is 0", () => {
-            expect(CircularSag(0, 8)).equals(0);
+            expect(circularSag(0, 8)).equals(0);
         });
         it("should return the radius at the radius", () => {
-            expect(CircularSag(8, 8)).equals(8);
+            expect(circularSag(8, 8)).equals(8);
         });
         it("should return 1-sin(60) at x=cos(60)=0.5 when r=1", () => {
-            expect(CircularSag(0.5, 1)).equals(1 - Math.sin(ToRadians(60)));
+            expect(circularSag(0.5, 1)).equals(1 - Math.sin(toRadians(60)));
         });
     });
 
     describe("Test ShapeFromE", () => {
         it("should return 1 when e=0 (circle)", () => {
-            expect(ShapeFromE(0)).equals(1);
+            expect(shapeFromE(0)).equals(1);
         });
         it("should return 0 when e=1 (parabola)", () => {
-            expect(ShapeFromE(1)).equals(0);
+            expect(shapeFromE(1)).equals(0);
         });
         it("should return 0.75 for e=0.5", () => {
-            expect(ShapeFromE(0.5)).equals(0.75);
+            expect(shapeFromE(0.5)).equals(0.75);
         });
     });
 
     describe("Test ConicSag", () => {
         it("should return 0 when x is 0", () => {
-            expect(ConicSag(0, 8.45, ShapeFromE(0.56))).equals(0);
+            expect(conicSag(0, 8.45, shapeFromE(0.56))).equals(0);
         });
         it("should return ~0.456 when x=2.75 and e=0.560 (validated vs focalpoints)", () => {
-            expect(ConicSag(2.75, 8.45, ShapeFromE(0.56))).closeTo(0.456, 0.001);
+            expect(conicSag(2.75, 8.45, shapeFromE(0.56))).closeTo(0.456, 0.001);
         });
         it("should return ~0.397 when x=2.50 and e=0.586 (validated vs focalpoints)", () => {
-            expect(ConicSag(2.50, 8.00, ShapeFromE(0.586))).closeTo(0.397, 0.001);
+            expect(conicSag(2.50, 8.00, shapeFromE(0.586))).closeTo(0.397, 0.001);
         });
     });
 

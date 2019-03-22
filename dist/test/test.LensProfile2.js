@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
 const index_1 = require("../lib/index");
-const curve1 = new index_1.Conic(7.6, index_1.ShapeFromE(0.65), 4.9);
+const curve1 = new index_1.Conic(7.6, index_1.shapeFromE(0.65), 4.9);
 const curve2 = new index_1.Circle(10, 0.625);
 const lensp = new index_1.LensProfile();
 lensp.addCurve(curve1);

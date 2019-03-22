@@ -1,10 +1,10 @@
 import { expect } from "chai";
 
-import { Conic, ShapeFromE} from "../lib/index";
+import { Conic, shapeFromE} from "../lib/index";
 
 describe("Test Conic", () => {
 
-    const conicA = new Conic(8, ShapeFromE(0), 3);
+    const conicA = new Conic(8, shapeFromE(0), 3);
     describe("Test 'circular' Conic (r=8, e=0, w=3)", () => {
         it("should start at 0,0", () => {
             expect(conicA.startx).equals(0);
@@ -16,7 +16,7 @@ describe("Test Conic", () => {
         });
     });
 
-    const conicB = new Conic(8, ShapeFromE(0), 3);
+    const conicB = new Conic(8, shapeFromE(0), 3);
     conicB.translateToX(1);
     conicB.translateToZ(0);
     describe("Test 'circular' Conic (r=8, e=0, w=3), with the sample segment tranlated to 1,0", () => {
@@ -30,7 +30,7 @@ describe("Test Conic", () => {
         });
     });
 
-    const conicC = new Conic(8, ShapeFromE(0.5), 3);
+    const conicC = new Conic(8, shapeFromE(0.5), 3);
     describe("Test 'elliptical' Conic (r=8, eccentricity = 0.5, w=3)", () => {
         it("should start at 0, 0", () => {
             expect(conicC.startx).equals(0);
@@ -42,7 +42,7 @@ describe("Test Conic", () => {
         });
     });
 
-    const conicD = new Conic(8, ShapeFromE(0.5), 3);
+    const conicD = new Conic(8, shapeFromE(0.5), 3);
     conicD.translateToX(1);
     conicD.translateToZ(0);
     describe("Test 'elliptical' Conic (r=8, eccentricity = 0.5, w=3,) with the sample segment tranlated to 1,0", () => {
@@ -56,7 +56,7 @@ describe("Test Conic", () => {
         });
     });
 
-    const conicE = new Conic(8, ShapeFromE(0.5), 3);
+    const conicE = new Conic(8, shapeFromE(0.5), 3);
     conicE.translateToX(1);
     conicE.translateToZ(0.2);
     describe("Test 'elliptical' Conic (r=8, eccentricity = 0.5, w=3,) with the sample segment tranlated to 1, 0.2", () => {

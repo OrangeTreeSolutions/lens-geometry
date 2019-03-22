@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
 const index_1 = require("../lib/index");
 describe("Test Conic", () => {
-    const conicA = new index_1.Conic(8, index_1.ShapeFromE(0), 3);
+    const conicA = new index_1.Conic(8, index_1.shapeFromE(0), 3);
     describe("Test 'circular' Conic (r=8, e=0, w=3)", () => {
         it("should start at 0,0", () => {
             chai_1.expect(conicA.startx).equals(0);
@@ -14,7 +14,7 @@ describe("Test Conic", () => {
             chai_1.expect(conicA.endz).closeTo(0.584, 0.001);
         });
     });
-    const conicB = new index_1.Conic(8, index_1.ShapeFromE(0), 3);
+    const conicB = new index_1.Conic(8, index_1.shapeFromE(0), 3);
     conicB.translateToX(1);
     conicB.translateToZ(0);
     describe("Test 'circular' Conic (r=8, e=0, w=3), with the sample segment tranlated to 1,0", () => {
@@ -27,7 +27,7 @@ describe("Test Conic", () => {
             chai_1.expect(conicB.endz).closeTo(1.009, 0.001);
         });
     });
-    const conicC = new index_1.Conic(8, index_1.ShapeFromE(0.5), 3);
+    const conicC = new index_1.Conic(8, index_1.shapeFromE(0.5), 3);
     describe("Test 'elliptical' Conic (r=8, eccentricity = 0.5, w=3)", () => {
         it("should start at 0, 0", () => {
             chai_1.expect(conicC.startx).equals(0);
@@ -38,7 +38,7 @@ describe("Test Conic", () => {
             chai_1.expect(conicC.endz).closeTo(0.578, 0.001);
         });
     });
-    const conicD = new index_1.Conic(8, index_1.ShapeFromE(0.5), 3);
+    const conicD = new index_1.Conic(8, index_1.shapeFromE(0.5), 3);
     conicD.translateToX(1);
     conicD.translateToZ(0);
     describe("Test 'elliptical' Conic (r=8, eccentricity = 0.5, w=3,) with the sample segment tranlated to 1,0", () => {
@@ -51,7 +51,7 @@ describe("Test Conic", () => {
             chai_1.expect(conicD.endz).closeTo(0.989, 0.001);
         });
     });
-    const conicE = new index_1.Conic(8, index_1.ShapeFromE(0.5), 3);
+    const conicE = new index_1.Conic(8, index_1.shapeFromE(0.5), 3);
     conicE.translateToX(1);
     conicE.translateToZ(0.2);
     describe("Test 'elliptical' Conic (r=8, eccentricity = 0.5, w=3,) with the sample segment tranlated to 1, 0.2", () => {
