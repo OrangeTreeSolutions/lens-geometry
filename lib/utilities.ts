@@ -150,3 +150,19 @@ export function getInputD(mmOrD: number): number {
         return mmOrD;
     }
 }
+
+/**
+ * solveCircleRadiusOnYAxis
+ *
+ * Solve the Radius of a circle given two points; with the assumption the circle center c is on the y axis.
+ *
+ * @param {point}   a   (x,y) coordinate of point a
+ * @param {point}   b   (x,y) coordinate of point b
+ *
+ * @return {number} radius of circle centered on the y axis (0,cy) passing through points a and b.
+ */
+export function solveCircleRadiusOnYAxis(a: {x: number, y: number}, b: {x: number, y: number} ): number {
+    const cy = ( a.x ** 2 - b.x ** 2 - b.y ** 2 + a.y ** 2 ) / (2 * (a.y - b.y));
+    const r = Math.sqrt((a.x ** 2) + ((a.y - cy) ** 2));
+    return r;
+}

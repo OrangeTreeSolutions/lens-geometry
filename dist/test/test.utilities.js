@@ -56,5 +56,16 @@ describe("Test Utilities", () => {
             chai_1.expect(index_1.conicSag(2.50, 8.00, index_1.shapeFromE(0.586))).closeTo(0.397, 0.001);
         });
     });
+    describe("Test circleRadiusFromTwoPoints", () => {
+        it("should return 2 when points are (x,y) = (0,2),(2,0) ", () => {
+            chai_1.expect(index_1.solveCircleRadiusOnYAxis({ x: 0, y: 2 }, { x: 2, y: 0 })).equals(2);
+        });
+        it("should return 2 when points are (x,y) = (0,3),(2,1) ", () => {
+            chai_1.expect(index_1.solveCircleRadiusOnYAxis({ x: 0, y: 3 }, { x: 2, y: 1 })).equals(2);
+        });
+        it("should return ~6 when points are (x,y) = (1, 9.91608), (2, 9.65685) validated vs Wolfram Alpha", () => {
+            chai_1.expect(index_1.solveCircleRadiusOnYAxis({ x: 1, y: 9.91608 }, { x: 2, y: 9.65685 })).closeTo(6, 0.001);
+        });
+    });
 });
 //# sourceMappingURL=test.utilities.js.map

@@ -5,7 +5,7 @@ import { TangentLine } from "./curves/TangentLine";
 import { LensCurve } from "./LensCurve";
 import { LensProfile } from "./LensProfile";
 import { SimpleCornea } from "./SimpleCornea";
-import { circularSag, conicSag, convertDTomm, convertmmToD, getInputD, getInputmm, shapeFromE, toDegrees, toRadians } from "./utilities";
+import { circularSag, conicSag, convertDTomm, convertmmToD, getInputD, getInputmm, shapeFromE, solveCircleRadiusOnYAxis, toDegrees, toRadians } from "./utilities";
 
 export {
     circularSag,
@@ -15,6 +15,7 @@ export {
     getInputD,
     getInputmm,
     shapeFromE,
+    solveCircleRadiusOnYAxis,
     toRadians,
     toDegrees,
 

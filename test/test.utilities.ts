@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { circularSag, conicSag, convertDTomm, convertmmToD, shapeFromE, toDegrees, toRadians } from "../lib/index";
+import { circularSag, conicSag, convertDTomm, convertmmToD, shapeFromE, solveCircleRadiusOnYAxis, toDegrees, toRadians } from "../lib/index";
 
 describe("Test Utilities", () => {
     describe("convert Diopters to mm", () => {
@@ -60,6 +60,20 @@ describe("Test Utilities", () => {
         it("should return ~0.397 when x=2.50 and e=0.586 (validated vs focalpoints)", () => {
             expect(conicSag(2.50, 8.00, shapeFromE(0.586))).closeTo(0.397, 0.001);
         });
+    });
+
+    describe("Test circleRadiusFromTwoPoints", () => {
+
+        it("should return 2 when points are (x,y) = (0,2),(2,0) ", () => {
+            expect(solveCircleRadiusOnYAxis({x: 0, y: 2}, {x: 2, y: 0} )).equals(2);
+        });
+        it("should return 2 when points are (x,y) = (0,3),(2,1) ", () => {
+            expect(solveCircleRadiusOnYAxis({x: 0, y: 3}, {x: 2, y: 1} )).equals(2);
+        });
+        it("should return ~6 when points are (x,y) = (1, 9.91608), (2, 9.65685) validated vs Wolfram Alpha", () => {
+            expect(solveCircleRadiusOnYAxis({x: 1, y: 9.91608}, {x: 2, y: 9.65685} )).closeTo(6, 0.001);
+        });
+
     });
 
 });

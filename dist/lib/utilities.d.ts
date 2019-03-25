@@ -91,3 +91,20 @@ export declare function getInputmm(mmOrD: number): number;
  * @return {number}     diopters (D)
  */
 export declare function getInputD(mmOrD: number): number;
+/**
+ * solveCircleRadiusOnYAxis
+ *
+ * Solve the Radius of a circle given two points; with the assumption the circle center c is on the y axis.
+ *
+ * @param {point}   a   (x,y) coordinate of point a
+ * @param {point}   b   (x,y) coordinate of point b
+ *
+ * @return {number} radius of circle centered on the y axis (0,cy) passing through points a and b.
+ */
+export declare function solveCircleRadiusOnYAxis(a: {
+    x: number;
+    y: number;
+}, b: {
+    x: number;
+    y: number;
+}): number;

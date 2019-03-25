@@ -22,6 +22,7 @@ exports.convertmmToD = utilities_1.convertmmToD;
 exports.getInputD = utilities_1.getInputD;
 exports.getInputmm = utilities_1.getInputmm;
 exports.shapeFromE = utilities_1.shapeFromE;
+exports.solveCircleRadiusOnYAxis = utilities_1.solveCircleRadiusOnYAxis;
 exports.toDegrees = utilities_1.toDegrees;
 exports.toRadians = utilities_1.toRadians;
 //# sourceMappingURL=index.js.map
