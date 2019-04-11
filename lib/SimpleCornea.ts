@@ -1,6 +1,6 @@
 import { Conic } from "./curves/Conic";
 import { LensProfile} from "./LensProfile";
-import { shapeFromE} from "./utilities";
+import { shapeFromEcc } from "./utilities";
 
 export class SimpleCornea {
 
@@ -22,12 +22,12 @@ export class SimpleCornea {
         this.steepEccentricity = steepEccentricity || flatEccentricity;
         this.isToric = !((steepApicalCurvature === undefined) && (steepEccentricity === undefined));
 
-        const flatShape = shapeFromE(this.flatEccentricity);
+        const flatShape = shapeFromEcc(this.flatEccentricity);
         const corneaFlat = new Conic(this.flatApicalCurvature, flatShape, this.diameter);
         this.flatMeridian.addCurve(corneaFlat);
 
         if (this.isToric) {
-            const steepShape = shapeFromE(this.steepEccentricity);
+            const steepShape = shapeFromEcc(this.steepEccentricity);
             const corneaSteep = new Conic(this.steepApicalCurvature, steepShape, this.diameter);
             this.steepMeridian = new LensProfile();
             this.steepMeridian.addCurve(corneaSteep);

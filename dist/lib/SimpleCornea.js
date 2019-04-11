@@ -13,11 +13,11 @@ class SimpleCornea {
         this.steepApicalCurvature = steepApicalCurvature || flatApicalCurvature;
         this.steepEccentricity = steepEccentricity || flatEccentricity;
         this.isToric = !((steepApicalCurvature === undefined) && (steepEccentricity === undefined));
-        const flatShape = utilities_1.shapeFromE(this.flatEccentricity);
+        const flatShape = utilities_1.shapeFromEcc(this.flatEccentricity);
         const corneaFlat = new Conic_1.Conic(this.flatApicalCurvature, flatShape, this.diameter);
         this.flatMeridian.addCurve(corneaFlat);
         if (this.isToric) {
-            const steepShape = utilities_1.shapeFromE(this.steepEccentricity);
+            const steepShape = utilities_1.shapeFromEcc(this.steepEccentricity);
             const corneaSteep = new Conic_1.Conic(this.steepApicalCurvature, steepShape, this.diameter);
             this.steepMeridian = new LensProfile_1.LensProfile();
             this.steepMeridian.addCurve(corneaSteep);

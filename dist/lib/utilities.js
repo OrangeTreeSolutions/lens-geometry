@@ -56,7 +56,7 @@ function circularSag(x, radius) {
 }
 exports.circularSag = circularSag;
 /**
- * ShapeFromE
+ * shapeFromEcc
  *
  * Compute the conic shape factor p from eccentricity
  *
@@ -64,10 +64,24 @@ exports.circularSag = circularSag;
  *
  * @return {number}     shape factor p
  */
-function shapeFromE(e) {
+function shapeFromEcc(e) {
     return 1 - e ** 2;
 }
-exports.shapeFromE = shapeFromE;
+exports.shapeFromEcc = shapeFromEcc;
+/**
+ * eccFromShape
+ *
+ * Compute the conic eccentricity from conic shape factor p.
+ * for p <= 1. If p > 1 (oblate ellipse) you can't compute e this way.
+ *
+ * @param {number}      p shape factor p
+ *
+ * @return {number}     eccentricity
+ */
+function eccFromShape(p) {
+    return Math.sqrt(1 - p);
+}
+exports.eccFromShape = eccFromShape;
 // UNTESTED
 //
 // /**

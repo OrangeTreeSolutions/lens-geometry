@@ -34,26 +34,37 @@ describe("Test Utilities", () => {
             chai_1.expect(index_1.circularSag(0.5, 1)).equals(1 - Math.sin(index_1.toRadians(60)));
         });
     });
-    describe("Test ShapeFromE", () => {
+    describe("Test ShapeFromEcc", () => {
         it("should return 1 when e=0 (circle)", () => {
-            chai_1.expect(index_1.shapeFromE(0)).equals(1);
+            chai_1.expect(index_1.shapeFromEcc(0)).equals(1);
         });
         it("should return 0 when e=1 (parabola)", () => {
-            chai_1.expect(index_1.shapeFromE(1)).equals(0);
+            chai_1.expect(index_1.shapeFromEcc(1)).equals(0);
         });
         it("should return 0.75 for e=0.5", () => {
-            chai_1.expect(index_1.shapeFromE(0.5)).equals(0.75);
+            chai_1.expect(index_1.shapeFromEcc(0.5)).equals(0.75);
+        });
+    });
+    describe("Test ShapeFromEcc", () => {
+        it("should return 0 when p=1 (circle)", () => {
+            chai_1.expect(index_1.eccFromShape(1)).equals(0);
+        });
+        it("should return 1 when e=0 (parabola)", () => {
+            chai_1.expect(index_1.eccFromShape(0)).equals(1);
+        });
+        it("should return 0.75 for e=0.5", () => {
+            chai_1.expect(index_1.eccFromShape(0.75)).equals(0.5);
         });
     });
     describe("Test ConicSag", () => {
         it("should return 0 when x is 0", () => {
-            chai_1.expect(index_1.conicSag(0, 8.45, index_1.shapeFromE(0.56))).equals(0);
+            chai_1.expect(index_1.conicSag(0, 8.45, index_1.shapeFromEcc(0.56))).equals(0);
         });
         it("should return ~0.456 when x=2.75 and e=0.560 (validated vs focalpoints)", () => {
-            chai_1.expect(index_1.conicSag(2.75, 8.45, index_1.shapeFromE(0.56))).closeTo(0.456, 0.001);
+            chai_1.expect(index_1.conicSag(2.75, 8.45, index_1.shapeFromEcc(0.56))).closeTo(0.456, 0.001);
         });
         it("should return ~0.397 when x=2.50 and e=0.586 (validated vs focalpoints)", () => {
-            chai_1.expect(index_1.conicSag(2.50, 8.00, index_1.shapeFromE(0.586))).closeTo(0.397, 0.001);
+            chai_1.expect(index_1.conicSag(2.50, 8.00, index_1.shapeFromEcc(0.586))).closeTo(0.397, 0.001);
         });
     });
     describe("Test circleRadiusFromTwoPoints", () => {

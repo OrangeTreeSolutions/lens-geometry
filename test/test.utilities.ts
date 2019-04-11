@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { circularSag, conicSag, convertDTomm, convertmmToD, shapeFromE, solveCircleRadiusOnYAxis, toDegrees, toRadians } from "../lib/index";
+import { circularSag, conicSag, convertDTomm, convertmmToD, eccFromShape, shapeFromEcc, solveCircleRadiusOnYAxis, toDegrees, toRadians } from "../lib/index";
 
 describe("Test Utilities", () => {
     describe("convert Diopters to mm", () => {
@@ -38,27 +38,39 @@ describe("Test Utilities", () => {
         });
     });
 
-    describe("Test ShapeFromE", () => {
+    describe("Test ShapeFromEcc", () => {
         it("should return 1 when e=0 (circle)", () => {
-            expect(shapeFromE(0)).equals(1);
+            expect(shapeFromEcc(0)).equals(1);
         });
         it("should return 0 when e=1 (parabola)", () => {
-            expect(shapeFromE(1)).equals(0);
+            expect(shapeFromEcc(1)).equals(0);
         });
         it("should return 0.75 for e=0.5", () => {
-            expect(shapeFromE(0.5)).equals(0.75);
+            expect(shapeFromEcc(0.5)).equals(0.75);
+        });
+    });
+
+    describe("Test ShapeFromEcc", () => {
+        it("should return 0 when p=1 (circle)", () => {
+            expect(eccFromShape(1)).equals(0);
+        });
+        it("should return 1 when e=0 (parabola)", () => {
+            expect(eccFromShape(0)).equals(1);
+        });
+        it("should return 0.75 for e=0.5", () => {
+            expect(eccFromShape(0.75)).equals(0.5);
         });
     });
 
     describe("Test ConicSag", () => {
         it("should return 0 when x is 0", () => {
-            expect(conicSag(0, 8.45, shapeFromE(0.56))).equals(0);
+            expect(conicSag(0, 8.45, shapeFromEcc(0.56))).equals(0);
         });
         it("should return ~0.456 when x=2.75 and e=0.560 (validated vs focalpoints)", () => {
-            expect(conicSag(2.75, 8.45, shapeFromE(0.56))).closeTo(0.456, 0.001);
+            expect(conicSag(2.75, 8.45, shapeFromEcc(0.56))).closeTo(0.456, 0.001);
         });
         it("should return ~0.397 when x=2.50 and e=0.586 (validated vs focalpoints)", () => {
-            expect(conicSag(2.50, 8.00, shapeFromE(0.586))).closeTo(0.397, 0.001);
+            expect(conicSag(2.50, 8.00, shapeFromEcc(0.586))).closeTo(0.397, 0.001);
         });
     });
 
