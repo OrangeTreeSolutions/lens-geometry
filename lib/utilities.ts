@@ -63,7 +63,7 @@ export function circularSag(x: number, radius: number): number {
  * @return {number}     shape factor p
  */
 export function shapeFromEcc(e: number): number {
-    return  1 - e ** 2;
+    return 1 - e ** 2;
 }
 
 /**
@@ -77,7 +77,7 @@ export function shapeFromEcc(e: number): number {
  * @return {number}     eccentricity
  */
 export function eccFromShape(p: number): number {
-    return  Math.sqrt(1 - p);
+    return Math.sqrt(1 - p);
 }
 
 // UNTESTED

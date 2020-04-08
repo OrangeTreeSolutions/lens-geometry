@@ -25,8 +25,9 @@
     "@types/mocha": "^5.2.6",
     "@types/node": "^11.11.5",
     "chai": "^4.2.0",
+    "eslint-config-pts-common": "git+ssh://git@github.com/PTSoptics/eslint-config-pts-common.git#server-config",
     "mocha": "^6.0.2",
     "ts-node": "^8.0.3",
-    "typescript": "^3.3.4000"
+    "typescript": "^3.5.3"
   }
 }

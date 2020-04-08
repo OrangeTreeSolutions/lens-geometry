@@ -127,6 +127,6 @@ class LensProfile {
         return (this.curveList.length) ? this.curveList[this.curveList.length - 1] : null;
     }
 }
-LensProfile.epsilon = 0.00001;
 exports.LensProfile = LensProfile;
+LensProfile.epsilon = 0.00001;
 //# sourceMappingURL=LensProfile.js.map

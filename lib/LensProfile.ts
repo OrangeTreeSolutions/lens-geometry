@@ -24,7 +24,8 @@ export class LensProfile {
         }
         if (zone === null) {
             throw new Error("out of lens profile bounds");
-        } else {
+        }
+        else {
             return zone;
         }
     }
@@ -40,7 +41,8 @@ export class LensProfile {
         const finalZone = this.finalZone();
         if (finalZone) {
             return finalZone.endx;
-        } else {
+        }
+        else {
             return 0;
         }
     }
@@ -78,7 +80,8 @@ export class LensProfile {
         if (previousCurve) {
             newCurve.translateToX(previousCurve.endx);
             newCurve.translateToZ(this.sag(previousCurve.endx));
-        } else {
+        }
+        else {
             newCurve.translateToX(0);
             newCurve.translateToZ(0);
         }

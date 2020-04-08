@@ -8,11 +8,11 @@ export declare abstract class LensCurve {
     private _startz;
     private _endx;
     private _width;
-    readonly startx: number;
-    readonly startz: number;
-    readonly endx: number;
-    readonly endz: number;
-    readonly width: number;
+    get startx(): number;
+    get startz(): number;
+    get endx(): number;
+    get endz(): number;
+    get width(): number;
     constructor(width: number, startx?: number, startz?: number);
     /**
      * resize
