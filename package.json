@@ -4,8 +4,12 @@
   "description": "library of curve construction utilities",
   "main": "dist/lib/index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register test/*.*",
-    "build": "tsc"
+    "test": "mocha -r ts-node/register test/*.ts",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "preversion": "npm run test",
+    "version": "npm run clean && npm run build",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -21,7 +25,7 @@
   },
   "homepage": "https://github.com/PTSoptics/LensGeometry#readme",
   "files": [
-    "dist/**"
+    "dist/lib/**"
   ],
   "devDependencies": {
     "@ptsoptics/eslint-config-common": "^1.0.0",
@@ -30,7 +34,7 @@
     "@types/node": "^11.11.5",
     "chai": "^4.2.0",
     "mocha": "^6.0.2",
-    "ts-node": "^8.0.3",
+    "ts-node": "^8.9.0",
     "typescript": "^3.5.3"
   }
 }

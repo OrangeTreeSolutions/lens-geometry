@@ -14,7 +14,7 @@
                 "${workspaceFolder}/dist/lib/*.js"
             ],
             "stopOnEntry": false,
-            "args": ["--no-timeouts", "--colors", "-r", "ts-node/register", "dist/test/*.js"],
+            "args": ["--no-timeouts", "--colors", "-r", "ts-node/register", "./test/*.ts"],
             
             "cwd": "${workspaceRoot}"
         }
