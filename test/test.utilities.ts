@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { circularSag, conicSag, convertDTomm, convertmmToD, eccFromShape, shapeFromEcc, solveCircleRadiusOnYAxis, toDegrees, toRadians } from "../lib/index";
+import { circularSag, conicSag, convertDTomm, convertmmToD, eccFromShape, shapeFromEcc, shapeFromR0AndXY, solveCircleRadiusOnYAxis, toDegrees, toRadians } from "../lib/index";
 
 describe("Test Utilities", () => {
     describe("convert Diopters to mm", () => {
@@ -77,15 +77,24 @@ describe("Test Utilities", () => {
     describe("Test circleRadiusFromTwoPoints", () => {
 
         it("should return 2 when points are (x,y) = (0,2),(2,0) ", () => {
-            expect(solveCircleRadiusOnYAxis({x: 0, y: 2}, {x: 2, y: 0} )).equals(2);
+            expect(solveCircleRadiusOnYAxis({ x: 0, y: 2 }, { x: 2, y: 0 })).equals(2);
         });
         it("should return 2 when points are (x,y) = (0,3),(2,1) ", () => {
-            expect(solveCircleRadiusOnYAxis({x: 0, y: 3}, {x: 2, y: 1} )).equals(2);
+            expect(solveCircleRadiusOnYAxis({ x: 0, y: 3 }, { x: 2, y: 1 })).equals(2);
         });
         it("should return ~6 when points are (x,y) = (1, 9.91608), (2, 9.65685) validated vs Wolfram Alpha", () => {
-            expect(solveCircleRadiusOnYAxis({x: 1, y: 9.91608}, {x: 2, y: 9.65685} )).closeTo(6, 0.001);
+            expect(solveCircleRadiusOnYAxis({ x: 1, y: 9.91608 }, { x: 2, y: 9.65685 })).closeTo(6, 0.001);
         });
+    });
 
+    describe("Test shapeFromR0AndXY", () => {
+
+        it("should return p = 1 when it's a circle r=2, (2,2) = 1 ", () => {
+            expect(shapeFromR0AndXY(2, 2, 2)).equals(1);
+        });
+        it("should return p = 0.4375 when r0=2 and the point is {2 , 2.5}  ", () => {
+            expect(shapeFromR0AndXY(2, 2, 2.5)).equals(0.4375);
+        });
     });
 
 });

@@ -54,6 +54,26 @@ export function circularSag(x: number, radius: number): number {
 }
 
 /**
+ * shapeFromR0AndXY
+ *
+ * Solve the Shape parameter p of an ellipse given {x,y} points, and the apical radius.
+ *
+ * Compute using Baker's Equation for Conic section
+ * given r0, {x, y}
+ * ref: Contact Lens Optics and Lens Design -- DW Douthwaite pp92-93.
+ *
+ * @param {number}   r0  apical radius
+ * @param {number}   x   sag
+ * @param {number}   y   semi-chord
+ *
+ * @return {number} shape parameter p
+ */
+export function shapeFromR0AndXY(r0: number, x: number, y: number): number {
+    const p = ((2 * r0 * x) - (y ** 2)) / (x ** 2);
+    return p;
+}
+
+/**
  * shapeFromEcc
  *
  * Compute the conic shape factor p from eccentricity
@@ -175,8 +195,8 @@ export function getInputD(mmOrD: number): number {
  *
  * @return {number} radius of circle centered on the y axis (0,cy) passing through points a and b.
  */
-export function solveCircleRadiusOnYAxis(a: {x: number, y: number}, b: {x: number, y: number} ): number {
-    const cy = ( a.x ** 2 - b.x ** 2 - b.y ** 2 + a.y ** 2 ) / (2 * (a.y - b.y));
+export function solveCircleRadiusOnYAxis(a: { x: number, y: number }, b: { x: number, y: number }): number {
+    const cy = (a.x ** 2 - b.x ** 2 - b.y ** 2 + a.y ** 2) / (2 * (a.y - b.y));
     const r = Math.sqrt((a.x ** 2) + ((a.y - cy) ** 2));
     return r;
 }
