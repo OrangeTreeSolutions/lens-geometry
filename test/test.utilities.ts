@@ -50,7 +50,7 @@ describe("Test Utilities", () => {
         });
     });
 
-    describe("Test ShapeFromEcc", () => {
+    describe("Test EccFromShape", () => {
         it("should return 0 when p=1 (circle)", () => {
             expect(eccFromShape(1)).equals(0);
         });
@@ -59,6 +59,9 @@ describe("Test Utilities", () => {
         });
         it("should return 0.75 for e=0.5", () => {
             expect(eccFromShape(0.75)).equals(0.5);
+        });
+        it("should return NAN if p > 1", () => {
+            expect(Number.isNaN(eccFromShape(1.5))).is.true;
         });
     });
 
