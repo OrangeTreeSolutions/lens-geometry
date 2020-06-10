@@ -1,6 +1,6 @@
 {
   "name": "@ptsoptics/lens-geometry",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "library of curve construction utilities",
   "main": "dist/lib/index.js",
   "scripts": {
