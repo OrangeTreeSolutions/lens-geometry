@@ -1,5 +1,6 @@
-import {LensCurve} from "../LensCurve";
-import {circularSag} from "../utilities";
+import { ICurveDescriptor } from "../ICurveDescriptor";
+import { LensCurve } from "../LensCurve";
+import { circularSag } from "../utilities";
 
 export class Circle extends LensCurve {
     private radius: number;
@@ -30,5 +31,13 @@ export class Circle extends LensCurve {
 
     protected recalculateInternalParameters(): void {
         this.zOffset = this.startx === 0 ? 0 : circularSag(this.startx, this.radius);
+    }
+
+    public getClassName(): string {
+        return "Circle";
+    }
+
+    public getCurveDescriptor(): ICurveDescriptor {
+        return { name: this.getClassName(), width: this.width, radius: this.radius };
     }
 }

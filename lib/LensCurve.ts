@@ -1,3 +1,6 @@
+import { Circle, Conic, shapeFromEcc, TangentConvexTorus, TangentLine } from ".";
+import { ICurveDescriptor } from "./ICurveDescriptor";
+
 /**
  * LensCurve class
  *
@@ -89,4 +92,71 @@ export abstract class LensCurve {
      * When the curve position or width is changed, some curve types need to recalulcate internal parameters
      */
     protected abstract recalculateInternalParameters(): void;  // this should be called whenever the startx/endx/width/ parameters are adjusted
+
+    /**
+     * getClassName
+     *
+     * Returns the class name as a string
+     *
+     * @return {string}     class name
+     */
+    public abstract getClassName(): string;
+
+
+    /**
+     * getCurveDescriptor
+     *
+     * Return a simple object that describes the curve
+     *
+     * @return {ICurveDescriptor}     curve descriptor object
+     */
+    public abstract getCurveDescriptor(): ICurveDescriptor;
+
+    /**
+     * fromDescriptor
+     *
+     * Return a lens curve from a ICurveDescriptor
+     *
+     * @return {LensCurve}          curve described by descriptor
+     */
+    public static fromDescriptor(descriptor: ICurveDescriptor): LensCurve {
+        const p = descriptor;
+        if (p.name === "Circle") {
+            if (p.radius === undefined) {
+                throw new Error("Missing Radius");
+            }
+            return new Circle(p.radius, p.width);
+        }
+        if (p.name === "Conic") {
+            if (p.radius === undefined) {
+                throw new Error("Missing Radius");
+            }
+            if (p.shape === undefined && p.ecc === undefined) {
+                throw new Error("Missing Shape or Ecc");
+            }
+            if (p.shape) {
+                return new Conic(p.radius, p.shape, p.width);
+            }
+            if (p.ecc) {
+                return new Conic(p.radius, shapeFromEcc(p.ecc), p.width);
+            }
+        }
+        if (p.name === "TangentConvexTorus") {
+            if (p.tangent === undefined) {
+                throw new Error("Missing Tangent");
+            }
+            if (p.radius === undefined) {
+                throw new Error("Missing Radius");
+            }
+            return new TangentConvexTorus(p.tangent, p.radius, p.width);
+        }
+        if (p.name === "TangentLine") {
+            if (p.tangent === undefined) {
+                throw new Error("Missing Tangent");
+            }
+            return new TangentLine(p.tangent, p.width);
+        }
+
+        throw new Error("Invalid Descriptor");
+    }
 }

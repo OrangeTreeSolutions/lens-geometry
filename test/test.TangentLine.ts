@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { TangentLine } from "../lib/index";
+import { LensCurve, TangentLine } from "../lib/index";
 
 describe("Test TangentLine", () => {
 
@@ -45,6 +45,26 @@ describe("Test TangentLine", () => {
         });
         it("should pass through 2.5, 3.4019", () => {
             expect(tanline15tr.height(2.5)).closeTo(3.4019, 0.0001);
+        });
+    });
+
+    const tanlineB = LensCurve.fromDescriptor(tanline0.getCurveDescriptor());
+    describe("Test TangentLine Descriptor", () => {
+        it("should start at 0,0", () => {
+            expect(tanlineB.startx).equals(0);
+            expect(tanlineB.startz).equals(0);
+        });
+        it("should end at 3,0", () => {
+            expect(tanlineB.endx).equals(3);
+            expect(tanlineB.endz).equals(0);
+        });
+        it("should identify as a TangentLine", () => {
+            expect(tanlineB.getClassName()).equals("TangentLine");
+        });
+        it("should return the original descriptor", () => {
+            expect(tanlineB.getCurveDescriptor().name).equals("TangentLine");
+            expect(tanlineB.getCurveDescriptor().width).equals(3);
+            expect(tanlineB.getCurveDescriptor().tangent).equals(0);
         });
     });
 

@@ -1,5 +1,6 @@
-import {LensCurve} from "../LensCurve";
-import {conicSag} from "../utilities";
+import { ICurveDescriptor } from "../ICurveDescriptor";
+import { LensCurve } from "../LensCurve";
+import { conicSag } from "../utilities";
 
 export class Conic extends LensCurve {
     private radius: number;
@@ -33,5 +34,13 @@ export class Conic extends LensCurve {
 
     protected recalculateInternalParameters(): void {
         this.zOffset = this.startx === 0 ? 0 : conicSag(this.startx, this.radius, this.shapeFactor);
+    }
+
+    public getClassName(): string {
+        return "Conic";
+    }
+
+    public getCurveDescriptor(): ICurveDescriptor {
+        return { name: this.getClassName(), width: this.width, radius: this.radius, shape: this.shapeFactor };
     }
 }

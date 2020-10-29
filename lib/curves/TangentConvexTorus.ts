@@ -1,3 +1,4 @@
+import { ICurveDescriptor } from "../ICurveDescriptor";
 import { LensCurve } from "../LensCurve";
 import { circularSag, toRadians } from "../utilities";
 
@@ -41,5 +42,13 @@ export class TangentConvexTorus extends LensCurve {
 
         // finally translate relative to startX
         this.xOffset = this.startx + torusx;
+    }
+
+    public getClassName(): string {
+        return "TangentConvexTorus";
+    }
+
+    public getCurveDescriptor(): ICurveDescriptor {
+        return { name: this.getClassName(), width: this.width, radius: this.radius, tangent: this.tangent };
     }
 }

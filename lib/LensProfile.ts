@@ -1,3 +1,4 @@
+import { ICurveDescriptor } from "./ICurveDescriptor";
 import { LensCurve } from "./index";
 
 export class LensProfile {
@@ -125,7 +126,22 @@ export class LensProfile {
     }
 
     /**
-     * sag
+     *  getCurveDescriptors
+     *
+     *  Returns array of curve descriptors
+     *
+     *  @return {ICurveDescriptor[]}  array of descriptors
+     */
+    public getCurveDescriptors(): ICurveDescriptor[] {
+        const result: ICurveDescriptor[] = [];
+        for (const c of this.curveList) {
+            result.push(c.getCurveDescriptor());
+        }
+        return result;
+    }
+
+    /**
+     * finalZone
      *
      * Return the last curve in the profile or null
      *
@@ -133,5 +149,22 @@ export class LensProfile {
      */
     private finalZone(): LensCurve | null {
         return (this.curveList.length) ? this.curveList[this.curveList.length - 1] : null;
+    }
+
+    /**
+     * fromDescriptors
+     *
+     * Returns a LensProfile from an array of lens curve descriptors
+     *
+     * @param {ICurveDescriptor} descriptors    array of curve discriptors
+     *
+     * @returns {LensProfile}                   the resulting lens profile
+     */
+    public static fromDescriptors(descriptors: ICurveDescriptor[]): LensProfile {
+        const lensp = new LensProfile();
+        for (const c of descriptors) {
+            lensp.addCurve(LensCurve.fromDescriptor(c));
+        }
+        return lensp;
     }
 }

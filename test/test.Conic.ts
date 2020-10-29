@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { Conic, shapeFromEcc } from "../lib/index";
+import { Conic, LensCurve, shapeFromEcc } from "../lib/index";
 
 describe("Test Conic", () => {
 
@@ -67,6 +67,40 @@ describe("Test Conic", () => {
         it("should end at 4, 1.189", () => {
             expect(conicE.endx).equals(4);
             expect(conicE.endz).closeTo(1.189, 0.001);
+        });
+    });
+
+    const conicF = LensCurve.fromDescriptor(conicE.getCurveDescriptor());
+    // Because we didn't translate it the curve should be the same as conicC above!!
+    describe("Test Conic Descriptor", () => {
+        it("should start at 0, 0", () => {
+            expect(conicF.startx).equals(0);
+            expect(conicF.startz).equals(0);
+        });
+        it("should end at 3, 0.578", () => {
+            expect(conicF.endx).equals(3);
+            expect(conicF.endz).closeTo(0.578, 0.001);
+        });
+        it("should identify as a Conic", () => {
+            expect(conicF.getClassName()).equals("Conic");
+        });
+        it("should return the original descriptor", () => {
+            expect(conicF.getCurveDescriptor().name).equals("Conic");
+            expect(conicF.getCurveDescriptor().width).equals(3);
+            expect(conicF.getCurveDescriptor().radius).equals(8);
+            expect(conicF.getCurveDescriptor().shape).equals(0.75);
+        });
+    });
+    // should be the same as the above
+    const conicG = LensCurve.fromDescriptor({ name: "Conic", width: 3, radius: 8, ecc: 0.5 });
+    describe("Test Conic Descriptor using Ecc", () => {
+        it("should start at 0, 0", () => {
+            expect(conicG.startx).equals(0);
+            expect(conicG.startz).equals(0);
+        });
+        it("should end at 3, 0.578", () => {
+            expect(conicG.endx).equals(3);
+            expect(conicG.endz).closeTo(0.578, 0.001);
         });
     });
 });

@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { TangentConvexTorus} from "../lib/index";
+import { LensCurve, TangentConvexTorus } from "../lib/index";
 
 describe("Test TangentConvexTorus", () => {
 
@@ -58,6 +58,28 @@ describe("Test TangentConvexTorus", () => {
         it("should end at 5.3, 1.918", () => {
             expect(torusD.endx).closeTo(5.300, 0.001);
             expect(torusD.endz).closeTo(1.918, 0.001);
+        });
+    });
+
+    const torusE = LensCurve.fromDescriptor(torusA.getCurveDescriptor());
+    // creating from torusA
+    describe("Test TangentConvexTorus fromDescriptor resting on the horizontal at 0,0)", () => {
+        it("should start at 0,0", () => {
+            expect(torusE.startx).equals(0);
+            expect(torusE.startz).equals(0);
+        });
+        it("should end at 3,-0.584", () => {
+            expect(torusE.endx).equals(3);
+            expect(torusE.endz).closeTo(-0.584, 0.001);
+        });
+        it("should identify as a TangentConvexTorus", () => {
+            expect(torusE.getClassName()).equals("TangentConvexTorus");
+        });
+        it("should return the original descriptor", () => {
+            expect(torusE.getCurveDescriptor().name).equals("TangentConvexTorus");
+            expect(torusE.getCurveDescriptor().width).equals(3);
+            expect(torusE.getCurveDescriptor().radius).equals(8);
+            expect(torusE.getCurveDescriptor().tangent).equals(0);
         });
     });
 });
