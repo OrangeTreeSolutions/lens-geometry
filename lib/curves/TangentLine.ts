@@ -41,4 +41,9 @@ export class TangentLine extends LensCurve {
     public getCurveDescriptor(): ICurveDescriptor {
         return { name: this.getClassName(), width: this.width, tangent: this.tangent };
     }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public getTangentAt(x: number): number {
+        return this.tangent;
+    }
 }

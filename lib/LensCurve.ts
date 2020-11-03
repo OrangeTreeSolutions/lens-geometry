@@ -29,21 +29,6 @@ export abstract class LensCurve {
     }
 
     /**
-     * resize
-     *
-     * Change the width of a curve
-     *
-     * **internal** use only
-     *
-     * @param {number} newWidth new curve width
-     */
-    public resize(newWidth: number) {
-        this._width = newWidth;
-        this._endx = this._startx + this._width;
-        this.recalculateInternalParameters();
-    }
-
-    /**
      * translateToX
      *
      * Set the curve starting X point
@@ -85,6 +70,16 @@ export abstract class LensCurve {
      * @return {number}     sag height.
      */
     public abstract height(x: number): number;
+
+    /**
+     * getTangentAt
+     *
+     * Compute the tangent of the curve at a particular point.
+     *
+     * @param {number}      x distance to sample
+     * @return {number}     tangent value
+     */
+    public abstract getTangentAt(x: number): number;
 
     /**
      * recalculateInternalParameters

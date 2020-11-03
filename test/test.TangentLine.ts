@@ -29,6 +29,9 @@ describe("Test TangentLine", () => {
         it("should pass through 1.5, 0.4019", () => {
             expect(tanline15.height(1.5)).closeTo(0.4019, 0.0001);
         });
+        it("should return the tangent specified", () => {
+            expect(tanline15.getTangentAt(1.5)).equals(15);
+        });
     });
 
     const tanline15tr = new TangentLine(15, 3);

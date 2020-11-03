@@ -1,6 +1,6 @@
 import { ICurveDescriptor } from "../ICurveDescriptor";
 import { LensCurve } from "../LensCurve";
-import { circularSag, toRadians } from "../utilities";
+import { circularSag, toRadians, toDegrees } from "../utilities";
 
 export class TangentConvexTorus extends LensCurve {
     private radius: number;         // radius of torus in mm
@@ -16,8 +16,9 @@ export class TangentConvexTorus extends LensCurve {
      * it and is therefore a convex curve on a lens profile. It's called a torus because if you rotated the circle around the lens
      * axis you would get a torus. Typically used as a peripheral curve for edge lift, connecting smoothly from the previous zone.
      *
-     * @param angle [0..90) angle in degrees relative to the horizontal (where a horizontal line is 0 degrees)
-     * @param width horizontal width of the circle 'curve'
+     * @param tangent [0..90) angle in degrees relative to the horizontal (where a horizontal line is 0 degrees)
+     * @param radius radius of the torus
+     * @param width horizontal width of the curve
      */
     constructor(tangent: number, radius: number, width: number) {
         super(width);
@@ -50,5 +51,13 @@ export class TangentConvexTorus extends LensCurve {
 
     public getCurveDescriptor(): ICurveDescriptor {
         return { name: this.getClassName(), width: this.width, radius: this.radius, tangent: this.tangent };
+    }
+
+    public getTangentAt(x: number): number {
+        // the circle is centered at xoffset/zoffset
+        // much like the solution for Circle; we determine a trianble where xoffset-x = the one side
+        // and r is the hypotenuse
+        // and the tangent angle is the arcsine
+        return toDegrees(Math.asin((this.xOffset - x) / this.radius));
     }
 }

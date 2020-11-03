@@ -17,6 +17,12 @@ describe("Test Circle", () => {
         it("should identify as a circle", () => {
             expect(circleA.getClassName()).equals("Circle");
         });
+        it('should have a tangent of 0 at 0', () => {
+            expect(circleA.getTangentAt(0)).equals(0);
+        });
+        it('should have a tangent near 22 at 3', () => {
+            expect(circleA.getTangentAt(3)).closeTo(22, 0.1);
+        });
         it("should return the correct descriptor", () => {
             expect(circleA.getCurveDescriptor().name).equals("Circle");
             expect(circleA.getCurveDescriptor().width).equals(3);

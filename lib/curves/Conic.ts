@@ -1,6 +1,6 @@
 import { ICurveDescriptor } from "../ICurveDescriptor";
 import { LensCurve } from "../LensCurve";
-import { conicSag } from "../utilities";
+import { conicSag, toDegrees } from "../utilities";
 
 export class Conic extends LensCurve {
     private radius: number;
@@ -42,5 +42,16 @@ export class Conic extends LensCurve {
 
     public getCurveDescriptor(): ICurveDescriptor {
         return { name: this.getClassName(), width: this.width, radius: this.radius, shape: this.shapeFactor };
+    }
+
+    public getTangentAt(x: number): number {
+        // given r (radius) and p (shape)
+        // the slope of the ellipse is the 1st derivative
+        // slope = (x) / (sqrt(r^2 - px^2))
+
+        // the slope can be converted to an angle
+        // atan(slope)
+        const slope = x / (Math.sqrt(this.radius ** 2 - this.shapeFactor * (x ** 2)));
+        return toDegrees(Math.atan(slope));
     }
 }

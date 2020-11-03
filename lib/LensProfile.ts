@@ -68,6 +68,25 @@ export class LensProfile {
     }
 
     /**
+     * getTangentAt
+     *
+     * Return tangent at distance x from centre
+     *
+     * @param {number}      x distance from centre
+     *
+     * @return {number}     angle at x in degrees
+     */
+    public getTangentAt(x: number): number {
+        // return the sag at x
+        // get curve to poll
+        const curve: LensCurve = this.curveList[this.curveNumber(x)];
+
+        // poll zone height
+        const tangent = curve.getTangentAt(x);
+        return tangent;
+    }
+
+    /**
      * addCurve
      *
      * Adds a curve to the profile. The curve is added to the end. The new curves starting offsets are updated to
@@ -156,13 +175,17 @@ export class LensProfile {
      *
      * Returns a LensProfile from an array of lens curve descriptors
      *
-     * @param {ICurveDescriptor} descriptors    array of curve discriptors
+     * @param {ICurveDescriptor} descriptors    array of curve descriptors
      *
      * @returns {LensProfile}                   the resulting lens profile
      */
     public static fromDescriptors(descriptors: ICurveDescriptor[]): LensProfile {
         const lensp = new LensProfile();
         for (const c of descriptors) {
+            if (c.inheritTangent && c.tangent === undefined) {
+                const prev = lensp.finalZone();
+                c.tangent = prev?.getTangentAt(prev.endx);
+            }
             lensp.addCurve(LensCurve.fromDescriptor(c));
         }
         return lensp;

@@ -1,6 +1,6 @@
 import { ICurveDescriptor } from "../ICurveDescriptor";
 import { LensCurve } from "../LensCurve";
-import { circularSag } from "../utilities";
+import { circularSag, toDegrees } from "../utilities";
 
 export class Circle extends LensCurve {
     private radius: number;
@@ -10,7 +10,7 @@ export class Circle extends LensCurve {
      * Circle constructor
      *
      * The Circle curve is a curve segment sampled from a circle that is always centered on the x-axis. If you translate the
-     * conic left or right, you are not moving the conic itself; you are just changing the arc being sampled. The curve is
+     * circle left or right, you are not moving the circle itself; you are just changing the arc being sampled. The curve is
      * translated vertically so that height is zero at startx. This curve type is frequently used for spherical base curves (startx=0)
      * and shepherical peripheral curves (startx > 0).
      *
@@ -39,5 +39,12 @@ export class Circle extends LensCurve {
 
     public getCurveDescriptor(): ICurveDescriptor {
         return { name: this.getClassName(), width: this.width, radius: this.radius };
+    }
+
+    public getTangentAt(x: number): number {
+        // because the circle is always centered on the x-axis (at 0) we can take x directly
+        // and form a trivial triangle, such that x is the one side, and r is the hypotenuse
+        // and the tangent angle is the arcsine
+        return toDegrees(Math.asin(x / this.radius));
     }
 }

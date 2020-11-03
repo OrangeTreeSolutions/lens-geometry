@@ -4,5 +4,6 @@ export interface ICurveDescriptor {
     radius?: number,
     tangent?: number,
     shape?: number,
-    ecc?: number
+    ecc?: number,
+    inheritTangent?: boolean
 }
