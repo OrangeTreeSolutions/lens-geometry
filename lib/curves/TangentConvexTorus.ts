@@ -55,7 +55,7 @@ export class TangentConvexTorus extends LensCurve {
 
     public getTangentAt(x: number): number {
         // the circle is centered at xoffset/zoffset
-        // much like the solution for Circle; we determine a trianble where xoffset-x = the one side
+        // much like the solution for Circle; we determine a triangle where xoffset-x = the one side
         // and r is the hypotenuse
         // and the tangent angle is the arcsine
         return toDegrees(Math.asin((this.xOffset - x) / this.radius));

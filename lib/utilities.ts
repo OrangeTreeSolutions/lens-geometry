@@ -166,7 +166,7 @@ export function getInputmm(mmOrD: number): number {
 }
 
 /**
- * getInputmm
+ * getInputD
  *
  * utility to get D from an input that takes both mm and D inputs
  *
@@ -197,6 +197,6 @@ export function getInputD(mmOrD: number): number {
  */
 export function solveCircleRadiusOnYAxis(a: { x: number, y: number }, b: { x: number, y: number }): number {
     const cy = (a.x ** 2 - b.x ** 2 - b.y ** 2 + a.y ** 2) / (2 * (a.y - b.y));
-    const r = Math.sqrt((a.x ** 2) + ((a.y - cy) ** 2));
+    const r = Math.hypot(a.x, a.y - cy);
     return r;
 }

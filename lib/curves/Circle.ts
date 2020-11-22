@@ -9,12 +9,12 @@ export class Circle extends LensCurve {
     /**
      * Circle constructor
      *
-     * The Circle curve is a curve segment sampled from a circle that is always centered on the x-axis. If you translate the
+     * The Circle curve is a curve segment sampled from a circle that is always centered on the y-axis. If you translate the
      * circle left or right, you are not moving the circle itself; you are just changing the arc being sampled. The curve is
      * translated vertically so that height is zero at startx. This curve type is frequently used for spherical base curves (startx=0)
      * and shepherical peripheral curves (startx > 0).
      *
-     * @param radius radius of a circle centered on the x axis (x=0).
+     * @param radius radius of a circle centered on the y axis (x=0).
      * @param width  width of the curve segment to sample.
      */
     constructor(radius: number, width: number) {
@@ -42,7 +42,7 @@ export class Circle extends LensCurve {
     }
 
     public getTangentAt(x: number): number {
-        // because the circle is always centered on the x-axis (at 0) we can take x directly
+        // because the circle is always centered on the y-axis (at 0) we can take x directly
         // and form a trivial triangle, such that x is the one side, and r is the hypotenuse
         // and the tangent angle is the arcsine
         return toDegrees(Math.asin(x / this.radius));

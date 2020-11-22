@@ -182,6 +182,8 @@ export class LensProfile {
     public static fromDescriptors(descriptors: ICurveDescriptor[]): LensProfile {
         const lensp = new LensProfile();
         for (const c of descriptors) {
+
+            // if inheritTangent flag is set; apply the tangent of previous curve
             if (c.inheritTangent && c.tangent === undefined) {
                 const prev = lensp.finalZone();
                 c.tangent = prev?.getTangentAt(prev.endx);
