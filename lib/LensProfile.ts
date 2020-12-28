@@ -123,8 +123,10 @@ export class LensProfile {
      */
     public generatePoints(sx: number, ex: number, step: number): Array<{ x: number, z: number }> {
         const data: Array<{ x: number, z: number }> = [];
-        for (let i = sx; i <= ex; i += step) {
-            data.push({ x: i, z: this.sag(i) });
+        const maxIndex = (ex - sx) / step;
+        for (let i = 0; i <= maxIndex; i++) {
+            const x = sx + (i * step);
+            data.push({ x: x, z: this.sag(x) });
         }
         return data;
     }
