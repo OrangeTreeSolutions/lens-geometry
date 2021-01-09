@@ -31,10 +31,10 @@
     "@ptsoptics/eslint-config-common": "^2.0.3",
     "@types/chai": "^4.2.14",
     "@types/mocha": "^8.0.4",
-    "@types/node": "^12.19.6",
+    "@types/node": "^14.14.20",
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
     "ts-node": "^9.0.0",
-    "typescript": "^3.9.7"
+    "typescript": "^4.1.3"
   }
 }
