@@ -27,14 +27,17 @@
   "files": [
     "dist/lib/**"
   ],
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
   "devDependencies": {
-    "@ptsoptics/eslint-config-common": "^2.0.3",
-    "@types/chai": "^4.2.14",
-    "@types/mocha": "^8.0.4",
-    "@types/node": "^14.14.20",
-    "chai": "^4.2.0",
-    "mocha": "^8.2.1",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.1.3"
+    "@ptsoptics/eslint-config-common": "^2.0.4",
+    "@types/chai": "^4.2.15",
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.27",
+    "chai": "^4.3.0",
+    "mocha": "^8.3.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
   }
 }
