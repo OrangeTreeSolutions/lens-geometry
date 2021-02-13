@@ -33,6 +33,7 @@
   "devDependencies": {
     "@ptsoptics/eslint-config-common": "^2.0.4",
     "@types/chai": "^4.2.15",
+    "@types/lodash": "^4.14.168",
     "@types/mocha": "^8.2.0",
     "@types/node": "^14.14.27",
     "chai": "^4.3.0",
