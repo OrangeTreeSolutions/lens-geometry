@@ -15,10 +15,10 @@ describe("Test TangentConvexTorus", () => {
             expect(torusA.endx).equals(3);
             expect(torusA.endz).closeTo(-0.584, 0.001);
         });
-        it('should have a tangent of 0 at 0', () => {
+        it("should have a tangent of 0 at 0", () => {
             expect(torusA.getTangentAt(0)).equals(0);
         });
-        it('should have a tangent near 22 at 3', () => {
+        it("should have a tangent near 22 at 3", () => {
             // the tangent is negative; because relative to a circle at the same position its upside down
             expect(torusA.getTangentAt(3)).closeTo(-22, 0.1);
         });
@@ -66,10 +66,10 @@ describe("Test TangentConvexTorus", () => {
             expect(torusD.endx).closeTo(5.300, 0.001);
             expect(torusD.endz).closeTo(1.918, 0.001);
         });
-        it('should have a tangent at the startX (x=4.7) at what we specified it should be', () => {
+        it("should have a tangent at the startX (x=4.7) at what we specified it should be", () => {
             expect(torusD.getTangentAt(4.7)).closeTo(33, 0.01);
         });
-        it('should flatten (lower tangent) as we move out from the startX (x=5.0)', () => {
+        it("should flatten (lower tangent) as we move out from the startX (x=5.0)", () => {
             expect(torusD.getTangentAt(5)).closeTo(30.5, 0.1);
         });
     });

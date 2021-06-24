@@ -14,10 +14,10 @@ describe("Test Conic", () => {
             expect(conicA.endx).equals(3);
             expect(conicA.endz).closeTo(0.584, 0.001);
         });
-        it('should have a tangent of 0 at 0', () => {
+        it("should have a tangent of 0 at 0", () => {
             expect(conicA.getTangentAt(0)).equals(0);
         });
-        it('should have a tangent near 22 at 3', () => {
+        it("should have a tangent near 22 at 3", () => {
             expect(conicA.getTangentAt(3)).closeTo(22, 0.1);
         });
     });
@@ -34,7 +34,7 @@ describe("Test Conic", () => {
             expect(conicB.endx).equals(4);
             expect(conicB.endz).closeTo(1.009, 0.001);
         });
-        it('should have a tangent near 22.0 at 3', () => {
+        it("should have a tangent near 22.0 at 3", () => {
             expect(conicB.getTangentAt(3)).closeTo(22.0, 0.1);
         });
     });
@@ -49,10 +49,10 @@ describe("Test Conic", () => {
             expect(conicC.endx).equals(3);
             expect(conicC.endz).closeTo(0.578, 0.001);
         });
-        it('should have a tangent of 0 at 0', () => {
+        it("should have a tangent of 0 at 0", () => {
             expect(conicC.getTangentAt(0)).equals(0);
         });
-        it('should have a tangent near 21.6 at 3', () => {
+        it("should have a tangent near 21.6 at 3", () => {
             expect(conicC.getTangentAt(3)).closeTo(21.6, 0.1);
         });
     });
