@@ -123,7 +123,7 @@ export class LensProfile {
      */
     public generatePoints(sx: number, ex: number, step: number): Array<{ x: number, z: number }> {
         const data: Array<{ x: number, z: number }> = [];
-        const maxIndex = (ex - sx) / step;
+        const maxIndex = Math.round((ex - sx) / step);
         for (let i = 0; i <= maxIndex; i++) {
             const x = sx + (i * step);
             data.push({ x: x, z: this.sag(x) });
@@ -166,7 +166,7 @@ export class LensProfile {
      *
      * Return the last curve in the profile or null
      *
-     * @return {LensCurve | null}     distance from centre
+     * @return {LensCurve | null}     final curve
      */
     private finalZone(): LensCurve | null {
         return (this.curveList.length) ? this.curveList[this.curveList.length - 1] : null;
