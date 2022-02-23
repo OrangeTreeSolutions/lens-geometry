@@ -1,5 +1,6 @@
 import { Circle, Conic, shapeFromEcc, TangentConvexTorus, TangentLine } from ".";
 import { ICurveDescriptor } from "./ICurveDescriptor";
+import * as _ from "lodash";
 
 /**
  * LensCurve class
@@ -25,7 +26,7 @@ export abstract class LensCurve {
         this._startx = startx || 0;
         this._startz = startz || 0;
         this._width = width;
-        this._endx = this.startx + this.width;
+        this._endx = _.round(this.startx + this.width, 4);
     }
 
     /**
@@ -39,7 +40,7 @@ export abstract class LensCurve {
      */
     public translateToX(newStartX: number) {
         this._startx = newStartX;
-        this._endx = this._startx + this._width;
+        this._endx = _.round(this._startx + this._width, 4);
         this.recalculateInternalParameters();
     }
 
