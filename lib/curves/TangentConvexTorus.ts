@@ -1,6 +1,6 @@
+import { circularSag, toDegrees, toRadians } from "../utilities";
 import { ICurveDescriptor } from "../ICurveDescriptor";
 import { LensCurve } from "../LensCurve";
-import { circularSag, toRadians, toDegrees } from "../utilities";
 
 export class TangentConvexTorus extends LensCurve {
     private radius: number;         // radius of torus in mm

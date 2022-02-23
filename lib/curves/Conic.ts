@@ -1,6 +1,6 @@
+import { conicSag, toDegrees } from "../utilities";
 import { ICurveDescriptor } from "../ICurveDescriptor";
 import { LensCurve } from "../LensCurve";
-import { conicSag, toDegrees } from "../utilities";
 
 export class Conic extends LensCurve {
     private radius: number;
