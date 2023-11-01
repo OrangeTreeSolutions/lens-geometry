@@ -1,5 +1,5 @@
 {
-  "name": "@OrangeTreeSolutions/lens-geometry",
+  "name": "@orangetreesolutions/lens-geometry",
   "version": "1.6.2",
   "description": "library of curve construction utilities",
   "main": "dist/lib/index.js",
@@ -32,7 +32,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@OrangeTreeSolutions/eslint-config-common": "^2.2.4",
+    "@orangetreesolutions/eslint-config-common": "^2.2.5" ,
     "@types/chai": "^4.3.5",
     "@types/lodash": "^4.14.196",
     "@types/mocha": "^10.0.1",
