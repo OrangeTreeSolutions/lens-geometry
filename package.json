@@ -1,5 +1,5 @@
 {
-  "name": "@ptsoptics/lens-geometry",
+  "name": "@OrangeTreeSolutions/lens-geometry",
   "version": "1.6.2",
   "description": "library of curve construction utilities",
   "main": "dist/lib/index.js",
@@ -14,17 +14,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PTSoptics/lens-geometry.git"
+    "url": "git+https://github.com/OrangeTreeSolutions/lens-geometry.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "author": "Dave Barreto",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PTSoptics/LensGeometry/issues"
+    "url": "https://github.com/OrangeTreeSolutions/LensGeometry/issues"
   },
-  "homepage": "https://github.com/PTSoptics/LensGeometry#readme",
+  "homepage": "https://github.com/OrangeTreeSolutions/LensGeometry#readme",
   "files": [
     "dist/lib/**"
   ],
