@@ -4,7 +4,7 @@
   "description": "library of curve construction utilities",
   "main": "dist/lib/index.js",
   "scripts": {
-    "lint": "eslint lib/**/*.ts",
+    "lint": "eslint",
     "test": "mocha -r ts-node/register test/*.ts",
     "build": "tsc --build",
     "clean": "tsc --build --clean",
@@ -29,17 +29,22 @@
     "dist/lib/**"
   ],
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@orangetreesolutions/eslint-config-common": "^2.2.5",
-    "@types/chai": "^4.3.5",
-    "@types/lodash": "^4.14.196",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "^18.17.0",
-    "chai": "^4.3.7",
-    "mocha": "^10.2.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "@eslint/compat": "^1.4.0",
+    "@eslint/js": "^9.28.0",
+    "@types/chai": "^5.2.2",
+    "@types/lodash-es": "^4.17.12",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.0.0",
+    "chai": "^6.2.0",
+    "eslint": "^9.37.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "mocha": "^11.7.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.33.1"
   }
 }

@@ -17,7 +17,7 @@ export class LensProfile {
     public curveNumber(x: number): number {
         let zone = null;
         // what zone to poll
-        for (let i: number = 0; i < this.curveList.length; i++) {
+        for (let i = 0; i < this.curveList.length; i++) {
             if (x <= this.curveList[i].endx + LensProfile.epsilon) {
                 zone = i;
                 break;

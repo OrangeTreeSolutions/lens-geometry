@@ -1,5 +1,4 @@
 import { expect } from "chai";
-
 import { Circle, Conic, LensProfile, shapeFromEcc } from "../lib/index";
 
 const curve1 = new Conic(7.6, shapeFromEcc(0.65), 4.9);

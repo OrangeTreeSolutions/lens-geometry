@@ -1,5 +1,4 @@
 import { expect } from "chai";
-
 import { LensCurve, TangentLine } from "../lib/index";
 
 describe("Test TangentLine", () => {

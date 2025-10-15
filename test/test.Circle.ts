@@ -1,5 +1,4 @@
 import { expect } from "chai";
-
 import { Circle, LensCurve } from "../lib/index";
 
 describe("Test Circle", () => {

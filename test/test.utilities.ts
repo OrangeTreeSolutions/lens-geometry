@@ -1,5 +1,4 @@
 import { expect } from "chai";
-
 import { circularSag, conicSag, convertDTomm, convertmmToD, eccFromShape, shapeFromEcc, shapeFromR0AndXY, solveCircleRadiusOnYAxis, toDegrees, toRadians } from "../lib/index";
 
 describe("Test Utilities", () => {

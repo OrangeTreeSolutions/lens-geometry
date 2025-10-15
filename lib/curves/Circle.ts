@@ -1,10 +1,10 @@
-import { circularSag, toDegrees } from "../utilities";
 import { ICurveDescriptor } from "../ICurveDescriptor";
 import { LensCurve } from "../LensCurve";
+import { circularSag, toDegrees } from "../utilities";
 
 export class Circle extends LensCurve {
     private radius: number;
-    private zOffset: number = 0;
+    private zOffset = 0;
 
     /**
      * Circle constructor

@@ -1,5 +1,4 @@
 import { expect } from "chai";
-
 import { Conic, LensCurve, shapeFromEcc } from "../lib/index";
 
 describe("Test Conic", () => {

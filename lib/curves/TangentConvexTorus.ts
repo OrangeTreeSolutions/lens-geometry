@@ -1,12 +1,12 @@
-import { circularSag, toDegrees, toRadians } from "../utilities";
 import { ICurveDescriptor } from "../ICurveDescriptor";
 import { LensCurve } from "../LensCurve";
+import { circularSag, toDegrees, toRadians } from "../utilities";
 
 export class TangentConvexTorus extends LensCurve {
     private radius: number;         // radius of torus in mm
     private tangent: number;        // tangent angle in degrees
-    private xOffset: number = 0;
-    private zOffset: number = 0;
+    private xOffset = 0;
+    private zOffset = 0;
 
     /**
      * TangentConvexTorus constructor

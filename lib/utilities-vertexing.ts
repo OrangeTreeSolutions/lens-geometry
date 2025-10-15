@@ -1,5 +1,4 @@
-import * as _ from "lodash";
-
+import { ceil, floor, round } from "lodash-es";
 /**
  * vertexCorrection
  * @param {number} sphere    sphere power in diopters
@@ -23,10 +22,10 @@ export function roundToEighthDiopter(diopter: number): number {
 
     // Precision Trimming
     // this makes sure that 0.9999942 is 1.000, and 0.00000000023 is 0.000 (assuming precision is 2)
-    value = _.round(value, precision + 1);
+    value = round(value, precision + 1);
 
     // Precision Truncation
     // this takes 1/8th diopter steps for example (0.125 and makes them 0.12)
-    value = (value >= 0) ? _.floor(value, precision) : _.ceil(value, precision);
+    value = (value >= 0) ? floor(value, precision) : ceil(value, precision);
     return value;
 }

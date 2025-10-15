@@ -1,5 +1,4 @@
 import { expect } from "chai";
-
 import { Circle, LensProfile } from "../lib/index";
 
 const curve1 = new Circle(7.896, 4.3);

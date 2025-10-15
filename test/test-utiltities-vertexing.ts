@@ -1,5 +1,4 @@
 import { expect } from "chai";
-
 import { roundToEighthDiopter, vertexCorrection } from "../lib/index";
 
 describe("Test Vertexing Utilities", () => {
