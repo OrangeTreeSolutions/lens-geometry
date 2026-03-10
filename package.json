@@ -1,6 +1,6 @@
 {
   "name": "@orangetreesolutions/lens-geometry",
-  "version": "1.6.7",
+  "version": "1.6.8",
   "description": "library of curve construction utilities",
   "main": "dist/lib/index.js",
   "scripts": {
