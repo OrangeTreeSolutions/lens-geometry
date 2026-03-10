@@ -5,6 +5,7 @@ import { TangentLine } from "./curves/TangentLine";
 import { LensCurve } from "./LensCurve";
 import { LensProfile } from "./LensProfile";
 import { SimpleCornea } from "./SimpleCornea";
+import { SimpleCorneaWithSclera } from "./SimpleCorneaWithSclera";
 import { circularSag, conicSag, convertDTomm, convertmmToD, eccFromShape, getInputD, getInputmm, shapeFromEcc, shapeFromR0AndXY, solveCircleRadiusOnYAxis, toDegrees, toRadians } from "./utilities";
 import { roundToEighthDiopter, vertexCorrection } from "./utilities-vertexing";
 
@@ -31,6 +32,7 @@ export {
     LensCurve,
     LensProfile,
     SimpleCornea,
+    SimpleCorneaWithSclera,
 
     Circle,
     Conic,

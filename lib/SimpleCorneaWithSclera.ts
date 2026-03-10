@@ -1,8 +1,9 @@
 import { Conic } from "./curves/Conic";
+import { TangentLine } from "./curves/TangentLine";
 import { LensProfile } from "./LensProfile";
 import { shapeFromEcc } from "./utilities";
 
-export class SimpleCornea {
+export class SimpleCorneaWithSclera {
 
     public flatMeridian: LensProfile = new LensProfile();
     public steepMeridian: LensProfile = new LensProfile();
@@ -12,26 +13,38 @@ export class SimpleCornea {
     private steepApicalCurvature: number;
     private flatEccentricity: number;
     private steepEccentricity: number;
-    private isToric: boolean;
+    private flatScleralAngle: number;
+    private steepScleralAngle: number;
+    private flatVID: number;
+    private steepVID: number;
 
-    constructor(diameter: number, flatApicalCurvature: number, flatEccentricity: number, steepApicalCurvature?: number, steepEccentricity?: number) {
+    constructor(diameter: number, flatApicalCurvature: number, flatEccentricity: number, flatScleralAngle: number, flatVID: number, steepApicalCurvature?: number, steepEccentricity?: number, steepScleralAngle?: number, steepVID?: number) {
         this.diameter = diameter;
+        const initVID = (this.diameter <= 12) ? this.diameter : 12;
+
         this.flatApicalCurvature = flatApicalCurvature;
         this.flatEccentricity = flatEccentricity;
-        this.steepApicalCurvature = steepApicalCurvature || flatApicalCurvature;
-        this.steepEccentricity = steepEccentricity || flatEccentricity;
-        this.isToric = !((steepApicalCurvature === undefined) && (steepEccentricity === undefined));
+        this.flatScleralAngle = flatScleralAngle || 40;
+        this.flatVID = flatVID || initVID;
+
+        this.steepApicalCurvature = steepApicalCurvature || this.flatApicalCurvature;
+        this.steepEccentricity = steepEccentricity || this.flatEccentricity;
+        this.steepScleralAngle = steepScleralAngle || this.flatScleralAngle;
+        this.steepVID = steepVID || this.flatVID;
 
         const flatShape = shapeFromEcc(this.flatEccentricity);
-        const corneaFlat = new Conic(this.flatApicalCurvature, flatShape, this.diameter);
-        this.flatMeridian.addCurve(corneaFlat);
+        const corneaFlat = new Conic(this.flatApicalCurvature, flatShape, this.flatVID);
+        const scleraFlat = new TangentLine(this.flatScleralAngle, this.diameter - this.flatVID);
 
-        if (this.isToric) {
-            const steepShape = shapeFromEcc(this.steepEccentricity);
-            const corneaSteep = new Conic(this.steepApicalCurvature, steepShape, this.diameter);
-            this.steepMeridian = new LensProfile();
-            this.steepMeridian.addCurve(corneaSteep);
-        }
+        this.flatMeridian.addCurve(corneaFlat);
+        this.flatMeridian.addCurve(scleraFlat);
+
+        const steepShape = shapeFromEcc(this.steepEccentricity);
+        const corneaSteep = new Conic(this.steepApicalCurvature, steepShape, this.flatVID);
+        const scleraSteep = new TangentLine(this.steepScleralAngle, this.diameter - this.steepVID);
+        this.steepMeridian = new LensProfile();
+        this.steepMeridian.addCurve(corneaSteep);
+        this.steepMeridian.addCurve(scleraSteep);
     }
 
     /**
