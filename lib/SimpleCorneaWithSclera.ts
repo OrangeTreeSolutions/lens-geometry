@@ -1,3 +1,4 @@
+import { round } from "lodash-es";
 import { Conic } from "./curves/Conic";
 import { TangentLine } from "./curves/TangentLine";
 import { LensProfile } from "./LensProfile";
@@ -33,15 +34,15 @@ export class SimpleCorneaWithSclera {
         this.steepVID = steepVID || this.flatVID;
 
         const flatShape = shapeFromEcc(this.flatEccentricity);
-        const corneaFlat = new Conic(this.flatApicalCurvature, flatShape, this.flatVID);
-        const scleraFlat = new TangentLine(this.flatScleralAngle, this.diameter - this.flatVID);
+        const corneaFlat = new Conic(this.flatApicalCurvature, flatShape, round(this.flatVID / 2, 2));
+        const scleraFlat = new TangentLine(this.flatScleralAngle, round((this.diameter - this.flatVID) / 2, 2));
 
         this.flatMeridian.addCurve(corneaFlat);
         this.flatMeridian.addCurve(scleraFlat);
 
         const steepShape = shapeFromEcc(this.steepEccentricity);
-        const corneaSteep = new Conic(this.steepApicalCurvature, steepShape, this.flatVID);
-        const scleraSteep = new TangentLine(this.steepScleralAngle, this.diameter - this.steepVID);
+        const corneaSteep = new Conic(this.steepApicalCurvature, steepShape, round(this.flatVID / 2, 2));
+        const scleraSteep = new TangentLine(this.steepScleralAngle, round((this.diameter - this.steepVID) / 2, 2));
         this.steepMeridian = new LensProfile();
         this.steepMeridian.addCurve(corneaSteep);
         this.steepMeridian.addCurve(scleraSteep);
