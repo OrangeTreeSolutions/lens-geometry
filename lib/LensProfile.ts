@@ -1,3 +1,4 @@
+import { round } from "lodash-es";
 import { ICurveDescriptor } from "./ICurveDescriptor";
 import { LensCurve } from "./index";
 
@@ -125,7 +126,7 @@ export class LensProfile {
         const data: Array<{ x: number, z: number }> = [];
         const maxIndex = Math.round((ex - sx) / step);
         for (let i = 0; i <= maxIndex; i++) {
-            const x = sx + (i * step);
+            const x = round(sx + (i * step), 4);
             data.push({ x: x, z: this.sag(x) });
         }
         return data;
