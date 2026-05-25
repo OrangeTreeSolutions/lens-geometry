@@ -200,3 +200,104 @@ export function solveCircleRadiusOnYAxis(a: { x: number, y: number }, b: { x: nu
     const r = Math.hypot(a.x, a.y - cy);
     return r;
 }
+
+
+/**
+ * solveEllipseRadiusOnYAxis
+ *
+ * Solve for the R0 of an ellipse given a chord length, central sag, shape parameter p
+ */
+export function solveConicR0ForArcSag(s: number, p: number, u: number, v: number) {
+
+    // how to use:
+    // s is the sag you want
+    // p is the shape factor (function of eccentricity for ellipse, p=1 for a circle)
+    // u = startX of the aspheric arc in the lens geometry
+    // v = endX of the aspheric arc in the lens geometry
+
+    // we want to solve the aspheric radius (r0) for an arc segment that starts at chord u, and ends at chord v, and has sag of s, given shape factor p
+
+    // derivation:
+    // given bakers conic formula
+    // y^2 = prx - px^2
+    //
+    // solve for x (x is sag)
+    // x =  (r +/- sqrt(r^2 - py^2))/p
+
+    // we're interested in the negative root (smaller x); the larger is on the opposite side of the ellipse; therefore:
+    // x = (r - sqrt(r^2 - py^2))/p
+
+    // we have u, and v which are the 2 chords: the y's in the expression above. we also have p,
+    // so we can write 2 expressions for corresponding x_1 and x_2
+
+    // x_1 = (r - sqrt(r^2 - pu^2))/p
+    // x_2 = (r - sqrt(r^2 - pv^2))/p
+
+    // we don't know what either x_1 or x_2 are, but we know the sag between them is s therefore:
+    // x_2 = x_1 + s
+
+    // then we can rewrite the 2nd equation for x_2 in terms of x_1 as:
+    // x_1     = ((r - sqrt(r^2 - pv^2))/p) - s
+
+    // we now have both equations with the same right hand side
+
+    // x_1     = (r - sqrt(r^2 - pu^2))/p
+    // x_1     = ((r - sqrt(r^2 - pv^2))/p) - s
+
+    // equate them
+
+    // (r - sqrt(r^2 - pu^2) = ((r-sqrt(r^2))/p) - s
+
+    // and solve for r
+    //
+    // r = sqrt( p^2s^4 + 2ps^2u^2 + 2ps^2v^2 + u^4 - 2u^2v^2 + v^4 ) / 2s
+
+    // i also factored the 2 common 2ps^2 terms to 2ps^2(u^2+v^2) in the implementation
+
+    // precomute exponents:
+    const s2 = s ** 2;
+    const p2 = p ** 2;
+    const u2 = u ** 2;
+    const v2 = v ** 2;
+
+    const s4 = s ** 4;
+    const u4 = u ** 4;
+    const v4 = v ** 4;
+
+    // evluate r0
+    const r0 = Math.sqrt(p2 * s4 + 2 * p * s2 * (u2 + v2) + u4 - 2 * u2 * v2 + v4) / (2 * s);
+
+    return r0;
+}
+
+/**
+ * solveEllipseRadiusOnYAxis
+ *
+ * Solve for the R of a circle given a chord length, central sag
+ */
+export function solveCircleRForArcSag(s: number, u: number, v: number) {
+
+    // how to use:
+    // s is the arc sag you want
+    // u = startX of the aspheric arc in the lens geometry
+    // v = endX of the aspheric arc in the lens geometry
+
+    // we want to solve the aspheric radius (r0) for an arc segment that starts at chord u, and ends at chord v, and has sag of s, given shape factor p
+
+    // derivation:
+    // see general solveConicR0ForArcSag; we just simplify for p=1
+
+    // precomute exponents:
+    const s2 = s ** 2;
+    const u2 = u ** 2;
+    const v2 = v ** 2;
+
+    const s4 = s ** 4;
+    const u4 = u ** 4;
+    const v4 = v ** 4;
+
+    // evluate r
+    const r0 = Math.sqrt(s4 + 2 * s2 * (u2 + v2) + u4 - 2 * u2 * v2 + v4) / (2 * s);
+
+    return r0;
+}

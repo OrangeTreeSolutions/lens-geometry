@@ -1,5 +1,8 @@
 import { expect } from "chai";
-import { circularSag, conicSag, convertDTomm, convertmmToD, eccFromShape, shapeFromEcc, shapeFromR0AndXY, solveCircleRadiusOnYAxis, toDegrees, toRadians } from "../lib/index";
+import {
+    circularSag, conicSag, convertDTomm, convertmmToD, eccFromShape, shapeFromEcc, shapeFromR0AndXY,
+    solveCircleRadiusOnYAxis, solveCircleRForArcSag, solveConicR0ForArcSag, toDegrees, toRadians
+} from "../lib/index";
 
 describe("Test Utilities", () => {
     describe("convert Diopters to mm", () => {
@@ -86,6 +89,35 @@ describe("Test Utilities", () => {
         });
         it("should return ~6 when points are (x,y) = (1, 9.91608), (2, 9.65685) validated vs Wolfram Alpha", () => {
             expect(solveCircleRadiusOnYAxis({ x: 1, y: 9.91608 }, { x: 2, y: 9.65685 })).closeTo(6, 0.001);
+        });
+    });
+
+    describe("Test solveConicR0ForArcSag on Circles", () => {
+        // use the same circle cases (only 2 because the 3rd one ends up being the exact same call)
+        it("should return 2 when points are (x,y) = (0,2),(2,0) ", () => {
+            expect(solveConicR0ForArcSag(2, 1, 0, 2)).equals(2);
+        });
+        it("should return ~6 when points are (x,y) = (1, 9.91608), (2, 9.65685); then sag = y2-y1, and u=1, and v=2; validated vs Wolfram Alpha", () => {
+            expect(solveConicR0ForArcSag(9.91608 - 9.65685, 1, 1, 2)).closeTo(6, 0.001);
+        });
+    });
+
+    describe("Test solveConicR0ForArcSag on Ellipse", () => {
+        it("should return ~8 ", () => {
+            expect(solveConicR0ForArcSag(1.666666 - 1.040607, 0.6, 4, 5)).closeTo(8, 0.001);
+        });
+        it("should return ~7.125 to calculate an arc with 0.1 additional sag", () => {
+            expect(solveConicR0ForArcSag(1.666666 - 1.040607 + 0.1, 0.6, 4, 5)).closeTo(7.125, 0.001);
+        });
+    });
+
+    describe("Test solveCircleRForArcSag", () => {
+
+        it("should return 2 when points are (x,y) = (0,2),(2,0) ", () => {
+            expect(solveCircleRForArcSag(2, 0, 2)).equals(2);
+        });
+        it("should return ~6 when points are (x,y) = (1, 9.91608), (2, 9.65685) validated vs Wolfram Alpha", () => {
+            expect(solveCircleRForArcSag(9.91608 - 9.65685, 1, 2)).closeTo(6, 0.001);
         });
     });
 

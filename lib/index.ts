@@ -6,13 +6,19 @@ import { LensCurve } from "./LensCurve";
 import { LensProfile } from "./LensProfile";
 import { SimpleCornea } from "./SimpleCornea";
 import { SimpleCorneaWithSclera } from "./SimpleCorneaWithSclera";
-import { circularSag, conicSag, convertDTomm, convertmmToD, eccFromShape, getInputD, getInputmm, shapeFromEcc, shapeFromR0AndXY, solveCircleRadiusOnYAxis, toDegrees, toRadians } from "./utilities";
+import {
+    circularSag, conicSag, convertDTomm, convertmmToD, eccFromShape, getInputD, getInputmm, shapeFromEcc,
+    shapeFromR0AndXY, solveCircleRadiusOnYAxis, solveCircleRForArcSag, solveConicR0ForArcSag,
+    toDegrees, toRadians
+} from "./utilities";
 import { roundToEighthDiopter, vertexCorrection } from "./utilities-vertexing";
 
 export {
     circularSag,
     conicSag,
     solveCircleRadiusOnYAxis,
+    solveCircleRForArcSag,
+    solveConicR0ForArcSag,
 
     convertDTomm,
     convertmmToD,
