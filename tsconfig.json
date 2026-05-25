@@ -4,5 +4,5 @@
     "references": [
       { "path": "./lib"},
       { "path": "./test"},
-    ],
-  }
+    ]
+}

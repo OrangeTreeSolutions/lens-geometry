@@ -4,6 +4,7 @@
         "composite": true,
         "outDir": "../dist/test",
         "rootDir": ".",
+        "types": ["node", "mocha"],
     },
     "references": [
         {

@@ -5,7 +5,7 @@
   "main": "dist/lib/index.js",
   "scripts": {
     "lint": "eslint",
-    "test": "mocha -r ts-node/register test/*.ts",
+    "test": "mocha test/*.ts",
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "preversion": "npm run test",
@@ -33,18 +33,18 @@
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.3",
-    "@eslint/js": "^9.39.4",
+    "@eslint/js": "^9.0.0",
     "@types/chai": "^5.2.2",
     "@types/lodash-es": "^4.17.12",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.0.0",
     "chai": "^6.2.0",
-    "eslint": "^9.39.4",
+    "eslint": "^9.0.0",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "mocha": "^11.7.4",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3",
     "typescript-eslint": "^8.33.1"
   }
 }
