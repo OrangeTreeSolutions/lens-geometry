@@ -1,6 +1,7 @@
+import { round } from "lodash-es";
 import { ICurveDescriptor } from "../ICurveDescriptor";
 import { LensCurve } from "../LensCurve";
-import { conicSag, toDegrees } from "../utilities";
+import { conicSag, eccFromShape, toDegrees } from "../utilities";
 
 export class Conic extends LensCurve {
     private radius: number;
@@ -41,7 +42,13 @@ export class Conic extends LensCurve {
     }
 
     public getCurveDescriptor(): ICurveDescriptor {
-        return { name: this.getClassName(), width: this.width, radius: this.radius, shape: this.shapeFactor };
+        const result: ICurveDescriptor = { name: this.getClassName(), width: this.width, radius: this.radius, shape: this.shapeFactor };
+
+        // for elliptical conics, also return ecc for informational purposes
+        if (this.shapeFactor > 0 && this.shapeFactor < 1) {
+            result.ecc = round(eccFromShape(this.shapeFactor), 3);
+        }
+        return result;
     }
 
     public getTangentAt(x: number): number {

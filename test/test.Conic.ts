@@ -103,6 +103,7 @@ describe("Test Conic", () => {
             expect(conicF.getCurveDescriptor().width).equals(3);
             expect(conicF.getCurveDescriptor().radius).equals(8);
             expect(conicF.getCurveDescriptor().shape).equals(0.75);
+            expect(conicF.getCurveDescriptor().ecc).equal(0.5);
         });
     });
     // should be the same as the above
