@@ -205,17 +205,22 @@ export function solveCircleRadiusOnYAxis(a: { x: number, y: number }, b: { x: nu
 /**
  * solveEllipseRadiusOnYAxis
  *
+ * @param {number} s    sag height of the arc (sag difference from start to end)
+ * @param {number} p    conic shape factor p (p = 1-e^2)
+ * @param {number} u    chord of the start point (start X)
+ * @param {number} v    chord of the end point (end X)
+ *
  * Solve for the R0 of an ellipse given a chord length, central sag, shape parameter p
  */
 export function solveConicR0ForArcSag(s: number, p: number, u: number, v: number) {
 
     // how to use:
-    // s is the sag you want
+    // s is the desired sag height of the arc (height at v - height at u)
     // p is the shape factor (function of eccentricity for ellipse, p=1 for a circle)
-    // u = startX of the aspheric arc in the lens geometry
-    // v = endX of the aspheric arc in the lens geometry
+    // u = start x of the aspheric arc in the lens geometry
+    // v = end x of the aspheric arc in the lens geometry
 
-    // we want to solve the aspheric radius (r0) for an arc segment that starts at chord u, and ends at chord v, and has sag of s, given shape factor p
+    // goal: solve the aspheric radius (r0) for an arc segment that starts at chord u, and ends at chord v, and has a sag of s, given shape factor p
 
     // derivation:
     // given bakers conic formula
@@ -245,14 +250,12 @@ export function solveConicR0ForArcSag(s: number, p: number, u: number, v: number
     // x_1     = ((r - sqrt(r^2 - pv^2))/p) - s
 
     // equate them
-
     // (r - sqrt(r^2 - pu^2) = ((r-sqrt(r^2))/p) - s
 
     // and solve for r
-    //
     // r = sqrt( p^2s^4 + 2ps^2u^2 + 2ps^2v^2 + u^4 - 2u^2v^2 + v^4 ) / 2s
 
-    // i also factored the 2 common 2ps^2 terms to 2ps^2(u^2+v^2) in the implementation
+    // PS - I also factored the two common 2ps^2* terms to 2ps^2(u^2+v^2) in the implementation
 
     // precomute exponents:
     const s2 = s ** 2;
@@ -272,6 +275,10 @@ export function solveConicR0ForArcSag(s: number, p: number, u: number, v: number
 
 /**
  * solveEllipseRadiusOnYAxis
+ *
+ * @param {number} s    sag height of the arc (sag difference from start to end)
+ * @param {number} u    chord of the start point (start X)
+ * @param {number} v    chord of the end point (end X)
  *
  * Solve for the R of a circle given a chord length, central sag
  */
